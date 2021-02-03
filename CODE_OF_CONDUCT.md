@@ -30,7 +30,7 @@ behavior and are expected to take appropriate and fair corrective action in
 response to any instances of unacceptable behavior.
 
 Team members must also ensure that they are engaged with the material and are
-contributing their fair share towards the coursework project.
+contributing their fair share towards the final coursework project.
 
 ## Scope
 
