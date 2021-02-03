@@ -4,7 +4,7 @@ GitHub project for coursework set-up.<br/>
 Product Backlog created.<br/>	
 Project builds to self-contained JAR with Maven.<br/>	
 Dockerfile for project set-up and works.<br/>	
-Travis CI for project set-up and build is working using JAR and Docker on Travis CI<br/>.	
+Travis CI for project set-up and build is working using JAR and Docker on Travis CI.<br/>	
 Correct branches for GitFlow workflow created - includes master, develop, and release branches.<br/>	
 First release created on GitHub.<br/>	
 Code of Conduct defined.<br/>
