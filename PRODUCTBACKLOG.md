@@ -1,6 +1,6 @@
 CODE REVIEW 1
 
-GitHub project for coursework set-up.	
+GitHub project for coursework set-up.	<br/>
 Product Backlog created.	
 Project builds to self-contained JAR with Maven.	
 Dockerfile for project set-up and works.	
