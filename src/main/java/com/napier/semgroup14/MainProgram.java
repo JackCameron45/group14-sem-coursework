@@ -5,6 +5,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 
+//Class to connect to MongoDB
 public class MainProgram
 {
     public static void main(String[] args)
