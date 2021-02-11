@@ -6,5 +6,8 @@ services:
   - docker
 
 after_success:
+  - docker network create --driver bridge group14-sem-coursework
+  - docker pull mongo
+  - docker run -d --name mongo-dbserver --network group14-sem-coursework
   - docker build -t group14-sem-coursework
   - docker run group14-sem-coursework
