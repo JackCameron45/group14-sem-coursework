@@ -42,8 +42,7 @@ when an individual is representing the project or its members.
 Instances of abusive, harassing, or otherwise unacceptable behavior that violate
 any section of this Code of Conduct may be reported at the Code Review sessions.
 
-Team members who do not follow or enforce the Code of Conduct in good
-faith may face temporary or permanent repercussions as determined by the rest of
+Team members who do not follow or enforce the Code of Conduct may face temporary or permanent repercussions as determined by the rest of
 the team.
 
 ## Attribution
