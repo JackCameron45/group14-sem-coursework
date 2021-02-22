@@ -4,7 +4,15 @@ import java.sql.*;
 
 public class MainProgram
 {
-    public static void main(String[] args)
+    /**
+     * Connection to MySQL database.
+     */
+    private Connection con = null;
+
+    /**
+     * Connect to the MySQL database.
+     */
+    public void connect()
     {
         try
         {
@@ -17,9 +25,7 @@ public class MainProgram
             System.exit(-1);
         }
 
-        // Connection to the database
-        Connection con = null;
-        int retries = 100;
+        int retries = 10;
         for (int i = 0; i < retries; ++i)
         {
             System.out.println("Connecting to database...");
@@ -30,9 +36,6 @@ public class MainProgram
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
-                // Wait a bit
-                Thread.sleep(10000);
-                // Exit for loop
                 break;
             }
             catch (SQLException sqle)
@@ -45,7 +48,13 @@ public class MainProgram
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
+    }
 
+    /**
+     * Disconnect from the MySQL database.
+     */
+    public void disconnect()
+    {
         if (con != null)
         {
             try
@@ -58,5 +67,17 @@ public class MainProgram
                 System.out.println("Error closing connection to database");
             }
         }
+    }
+
+    public static void main(String[] args)
+    {
+        // Create new Application
+        MainProgram a = new MainProgram();
+
+        // Connect to database
+        a.connect();
+
+        // Disconnect from database
+        a.disconnect();
     }
 }
