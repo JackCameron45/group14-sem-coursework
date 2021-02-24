@@ -1,0 +1,123 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+
+actor Student as "Student"
+
+rectangle Database
+
+rectangle "Program" {
+    usecase UC1 as "Get population of countries in the world, largest to smallest"
+    usecase UC2 as "Get population of countries in a continent, largest to smallest"
+    usecase UC3 as "Get population of countries in a region, largest to smallest"
+    usecase UC4 as "Get population of N countries in the world, N provided by user"
+    usecase UC5 as "Get population of N countries in a continent, N provided by user"
+    usecase UC6 as "Get population of N countries in a region, N provided by user"
+    usecase UC7 as "Get population of cities in the world, largest to smallest"
+    usecase UC8 as "Get population of cities in a continent, largest to smallest"
+    usecase UC9 as "Get population of cities in a region, largest to smallest"
+    usecase UC10 as "Get population of cities in a country, largest to smallest"
+    usecase UC11 as "Get population of cities in a district, largest to smallest"
+    usecase UC12 as "Get population of N cities in the world, N provided by user"
+    usecase UC13 as "Get population of N cities in a continent, N provided by user"
+    usecase UC14 as "Get population of N cities in a region, N provided by user"
+    usecase UC15 as "Get population of N cities in a country, N provided by user"
+    usecase UC16 as "Get population of N cities in a district, N provided by user"
+    usecase UC17 as "Get population of capital cities in the world, largest to smallest"
+    usecase UC18 as "Get population of capital cities in a continent, largest to smallest"
+    usecase UC19 as "Get population of capital cities in a region, largest to smallest"
+    usecase UC20 as "Get population of N capital cities in the world, N provided by user"
+    usecase UC21 as "Get population of N capital cities in a continent, N provided by user"
+    usecase UC22 as "Get population of N capital cities in a region, N provided by user"
+    usecase UC23 as "Get population of people, people living in cities and people not living in cities in each continent"
+    usecase UC24 as "Get population of people, people living in cities and people not living in cities in each region"
+    usecase UC25 as "Get population of people, people living in cities and people not living in cities in each country"
+    usecase UC26 as "Get population of the world"
+    usecase UC27 as "Get population of a continent"
+    usecase UC28 as "Get population of a region"
+    usecase UC29 as "Get population of a country"
+    usecase UC30 as "Get population of a district"
+    usecase UC31 as "Get population of a city"
+    usecase UC32 as "Get population of people who speak Chinese"
+    usecase UC33 as "Get population of people who speak English"
+    usecase UC34 as "Get population of people who speak Hindi"
+    usecase UC35 as "Get population of people who speak Spanish"
+    usecase UC36 as "Get population of people who speak Arabic"
+}
+
+    Student - UC1
+    Student - UC2
+    Student - UC3
+    Student - UC4
+    Student - UC5
+    Student - UC6
+    Student - UC7
+    Student - UC8
+    Student - UC9
+    Student - UC10
+    Student - UC11
+    Student - UC12
+    Student - UC13
+    Student - UC14
+    Student - UC15
+    Student - UC16
+    Student - UC17
+    Student - UC18
+    Student - UC19
+    Student - UC20
+    Student - UC21
+    Student - UC22
+    Student - UC23
+    Student - UC24
+    Student - UC25
+    Student - UC26
+    Student - UC27
+    Student - UC28
+    Student - UC29
+    Student - UC30
+    Student - UC31
+    Student - UC32
+    Student - UC33
+    Student - UC34
+    Student - UC35
+    Student - UC36
+
+    UC1 - Database
+    UC2 - Database
+    UC3 - Database
+    UC4 - Database
+    UC5 - Database
+    UC6 - Database
+    UC7 - Database
+    UC8 - Database
+    UC9 - Database
+    UC10 - Database
+    UC11 - Database
+    UC12 - Database
+    UC13 - Database
+    UC14 - Database
+    UC15 - Database
+    UC16 - Database
+    UC17 - Database
+    UC18 - Database
+    UC19 - Database
+    UC20 - Database
+    UC21 - Database
+    UC22 - Database
+    UC23 - Database
+    UC24 - Database
+    UC25 - Database
+    UC26 - Database
+    UC27 - Database
+    UC28 - Database
+    UC29 - Database
+    UC30 - Database
+    UC31 - Database
+    UC32 - Database
+    UC33 - Database
+    UC34 - Database
+    UC35 - Database
+    UC36 - Database
+
+@enduml
