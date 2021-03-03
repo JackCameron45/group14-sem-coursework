@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As students of the SEM module we need to show the population of a district.
+As a population data analyst, I need to show the population of a district to aid with statistics.
 
 ### Scope
 
@@ -28,22 +28,22 @@ No report is produced.
 
 ### Primary Actor
 
-Students of the SEM module.
+Population data analyst
 
 ### Trigger
 
-A task has been assigned by the SEM teaching team.
+Statistics are requested for population.
 
 ## MAIN SUCCESS SCENARIO
 
-1. SEM teaching team request population information.
-2. Students extract current population information.
-3. Students provide report to the SEM teaching team.
+1. population information requested.
+2. current population information extracted.
+3. report provided to the population data analyst.
 
 ## EXTENSIONS
 
 1. **Missing data**:
-    1. Students inform SEM teaching team the data is missing.
+   1. inform data analyst the data is missing.
 
 ## SUB-VARIATIONS
 

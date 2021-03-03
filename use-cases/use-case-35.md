@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As students of the SEM module we need to show the amount of people who speak Spanish.
+As a Java application developer I need to show the amount of people who speak Spanish to aid with the localisation of my project.
 
 ### Scope
 
@@ -28,22 +28,22 @@ No report is produced.
 
 ### Primary Actor
 
-Students of the SEM module.
+Java Application Developer
 
 ### Trigger
 
-A task has been assigned by the SEM teaching team.
+Statistics are requested for population.
 
 ## MAIN SUCCESS SCENARIO
 
-1. SEM teaching team request population information.
-2. Students extract current population information.
-3. Students provide report to the SEM teaching team.
+1. population information requested.
+2. current population information extracted.
+3. report provided to the Java Application Developer.
 
 ## EXTENSIONS
 
 1. **Missing data**:
-    1. Students inform SEM teaching team the data is missing.
+   1. inform Java Application Developer the data is missing.
 
 ## SUB-VARIATIONS
 

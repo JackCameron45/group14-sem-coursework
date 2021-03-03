@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As students of the SEM module we need a list of all the cities in a continent organised by largest population to smallest.
+As an urban city planner, I need a list of all the cities in a continent organised by largest population to smallest to assist with the development of housing.
 
 ### Scope
 
@@ -28,22 +28,22 @@ No report is produced.
 
 ### Primary Actor
 
-Students of the SEM module.
+Urban City planner
 
 ### Trigger
 
-A task has been assigned by the SEM teaching team.
+Statistics are requested for population.
 
 ## MAIN SUCCESS SCENARIO
 
-1. SEM teaching team request population information.
-2. Students extract current population information.
-3. Students provide report to the SEM teaching team.
+1. population information requested.
+2. current population information extracted.
+3. report provided to the urban city planner.
 
 ## EXTENSIONS
 
 1. **Missing data**:
-    1. Students inform SEM teaching team the data is missing.
+   1. inform urban city planner the data is missing.
 
 ## SUB-VARIATIONS
 
