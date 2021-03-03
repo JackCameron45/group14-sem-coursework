@@ -3,7 +3,9 @@
 
 left to right direction
 
-actor Student as "Student"
+actor PopData as "Population Data Analyst"
+actor UrbPlanner as "Urban City Planner"
+actor JavaDev as "Java Application Developer"
 
 rectangle Database
 
@@ -46,42 +48,42 @@ rectangle "Program" {
     usecase UC36 as "Get population of people who speak Arabic"
 }
 
-    Student - UC1
-    Student - UC2
-    Student - UC3
-    Student - UC4
-    Student - UC5
-    Student - UC6
-    Student - UC7
-    Student - UC8
-    Student - UC9
-    Student - UC10
-    Student - UC11
-    Student - UC12
-    Student - UC13
-    Student - UC14
-    Student - UC15
-    Student - UC16
-    Student - UC17
-    Student - UC18
-    Student - UC19
-    Student - UC20
-    Student - UC21
-    Student - UC22
-    Student - UC23
-    Student - UC24
-    Student - UC25
-    Student - UC26
-    Student - UC27
-    Student - UC28
-    Student - UC29
-    Student - UC30
-    Student - UC31
-    Student - UC32
-    Student - UC33
-    Student - UC34
-    Student - UC35
-    Student - UC36
+    PopData - UC1
+    PopData - UC2
+    PopData - UC3
+    PopData - UC4
+    PopData - UC5
+    PopData - UC6
+    UrbPlanner - UC7
+    UrbPlanner - UC8
+    UrbPlanner - UC9
+    UrbPlanner - UC10
+    UrbPlanner - UC11
+    UrbPlanner - UC12
+    UrbPlanner - UC13
+    UrbPlanner - UC14
+    UrbPlanner - UC15
+    UrbPlanner - UC16
+    UrbPlanner - UC17
+    UrbPlanner - UC18
+    UrbPlanner - UC19
+    UrbPlanner - UC20
+    UrbPlanner - UC21
+    UrbPlanner - UC22
+    UrbPlanner - UC23
+    UrbPlanner - UC24
+    UrbPlanner - UC25
+    PopData - UC26
+    PopData - UC27
+    PopData - UC28
+    PopData - UC29
+    PopData - UC30
+    PopData - UC31
+    JavaDev - UC32
+    JavaDev - UC33
+    JavaDev - UC34
+    JavaDev - UC35
+    JavaDev - UC36
 
     UC1 - Database
     UC2 - Database
