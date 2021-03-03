@@ -2,6 +2,7 @@ package com.napier.semgroup14;
 
 import java.sql.*;
 
+// Class to connect to the MSQL database
 public class MainProgram
 {
     /**
@@ -69,6 +70,7 @@ public class MainProgram
         }
     }
 
+    //Use methods to connect to the database
     public static void main(String[] args)
     {
         // Create new Application
