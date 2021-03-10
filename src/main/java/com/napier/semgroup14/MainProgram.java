@@ -97,7 +97,7 @@ public class MainProgram
             // Create string for SQL statement
             String strSelect =
                     "SELECT ID, Name "
-                            + "FROM world"
+                            + "FROM city "
                             + "WHERE ID = " + CityID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
