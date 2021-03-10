@@ -35,7 +35,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.napier.SEMGroup14.MainProgram</mainClass>
+                            <mainClass>com.napier.semgroup14.MainProgram</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
