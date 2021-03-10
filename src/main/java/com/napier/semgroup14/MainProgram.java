@@ -79,7 +79,58 @@ public class MainProgram
         // Connect to database
         a.connect();
 
+        // Get Employee
+        City city = a.getCity(247);
+        // Display results
+        a.displayCity(city);
+
         // Disconnect from database
         a.disconnect();
+    }
+
+    public City getCity(int CityID)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, Name "
+                            + "FROM world "
+                            + "WHERE ID = " + CityID;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new employee if valid.
+            // Check one is returned
+            if (rset.next())
+            {
+                City city = new City();
+                city.ID = rset.getInt("ID");
+                city.Name = rset.getString("Name");
+                return city;
+            }
+            else
+                return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    public void displayCity(City city)
+    {
+        if (city != null)
+        {
+            System.out.println(
+                    city.ID + " "
+                            + city.Name + "\n"
+                            + city.CountryCode + "\n"
+                            + city.District + "\n"
+                            + city.Population + "\n");
+        }
     }
 }
