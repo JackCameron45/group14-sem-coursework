@@ -2,16 +2,16 @@ package com.napier.semgroup14;
 
 import java.sql.*;
 
-// Class to connect to the MSQL database
+// Class to connect to the MSQL world database
 public class MainProgram
 {
     /**
-     * Connection to MySQL database.
+     * Connection to MySQL world database.
      */
     private Connection con = null;
 
     /**
-     * Connect to the MySQL database.
+     * Connect to the MySQL world database.
      */
     public void connect()
     {
@@ -52,7 +52,7 @@ public class MainProgram
     }
 
     /**
-     * Disconnect from the MySQL database.
+     * Disconnect from the MySQL world database.
      */
     public void disconnect()
     {
