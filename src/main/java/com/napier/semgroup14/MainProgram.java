@@ -88,6 +88,7 @@ public class MainProgram
         a.disconnect();
     }
 
+    //Method to get a city from the database
     public City getCity(int CityID)
     {
         try
@@ -121,6 +122,7 @@ public class MainProgram
         }
     }
 
+    //Method to display a city from the database
     public void displayCity(City city)
     {
         if (city != null)
