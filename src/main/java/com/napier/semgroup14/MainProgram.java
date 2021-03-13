@@ -110,6 +110,12 @@ public class MainProgram
         // Run query #10
         query10Display(citiesq10);
 
+        // Extract info for query #11
+        System.out.println("Query 11, population of cities in district Mendoza"+ "\n");
+        ArrayList<City> citiesq11 = a.query11GetList();
+        // Run query #11
+        query10Display(citiesq11);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -347,6 +353,55 @@ public class MainProgram
 
     //Method to display Query10
     public static void query10Display(ArrayList<City> cities){
+        for (int i = 0; i < cities.size(); i++) {
+            if (cities.get(i) != null)
+            {
+                System.out.println(
+                        cities.get(i).Name + "\n"
+                                + cities.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets all the current cities populations in a district.
+     * @return A list of all cities and populations in a district, or null if there is an error.
+     */
+    public ArrayList<City> query11GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, city.Population "
+                            + "FROM city "
+                            + "WHERE city.District = 'Mendoza' "
+                            + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.Name = rset.getString("city.Name");
+                city.Population = rset.getInt("city.Population");
+                cities.add(city);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    //Method to display Query11
+    public static void query11Display(ArrayList<City> cities){
         for (int i = 0; i < cities.size(); i++) {
             if (cities.get(i) != null)
             {
