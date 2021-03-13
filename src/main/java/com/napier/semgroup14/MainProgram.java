@@ -88,9 +88,15 @@ public class MainProgram
 
         // Extract info for query #7
         System.out.println("Query 7"+ "\n");
-        ArrayList<City> cities = a.query7GetList();
+        ArrayList<City> citiesq7 = a.query7GetList();
         // Run query #7
-        query7Display(cities);
+        query7Display(citiesq7);
+
+        // Extract info for query #8
+        System.out.println("Query 7"+ "\n");
+        ArrayList<City> citiesq8 = a.query8GetList();
+        // Run query #8
+        query8Display(citiesq8);
 
         // Disconnect from database
         a.disconnect();
@@ -145,8 +151,8 @@ public class MainProgram
     }
 
     /**
-     * Gets all the current cities populations.
-     * @return A list of all cities and populations, or null if there is an error.
+     * Gets all the current cities populations in the world.
+     * @return A list of all cities and populations in the world, or null if there is an error.
      */
     public ArrayList<City> query7GetList()
     {
@@ -161,7 +167,7 @@ public class MainProgram
                             + "ORDER BY Population ASC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract city information
             ArrayList<City> cities = new ArrayList<City>();
             while (rset.next())
             {
@@ -191,4 +197,56 @@ public class MainProgram
             }
         }
     }
+
+    /**
+     * Gets all the current cities populations in a continent.
+     * @return A list of all cities and populations in a continent, or null if there is an error.
+     */
+    public ArrayList<City> query8GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, city.Population "
+                            + "FROM city, country "
+                            + "WHERE city.CountryCode = country.Code"
+                            + "AND city.CountryCode IN"
+                            + "(SELECT country.Code FROM country WHERE Continent = \"Europe\" )"
+                            + "ORDER BY Population ASC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.Name = rset.getString("city.Name");
+                city.Population = rset.getInt("city.Population");
+                cities.add(city);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    //Method to display Query8
+    public static void query8Display(ArrayList<City> cities){
+        for (int i = 0; i < cities.size(); i++) {
+            if (cities.get(i) != null)
+            {
+                System.out.println(
+                        cities.get(i).Name + "\n"
+                                + cities.get(i).Population + "\n");
+            }
+        }
+    }
+
 }
