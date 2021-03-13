@@ -1,6 +1,7 @@
 package com.napier.semgroup14;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 // Class to connect to the MSQL world database
 public class MainProgram
@@ -79,10 +80,15 @@ public class MainProgram
         // Connect to database
         a.connect();
 
-        // Get Employee
+        // Run Test Query
         City city = a.getCity(247);
         // Display results
         a.displayCity(city);
+
+        // Extract city population information
+        ArrayList<City> cities = a.queryNo7();
+        // Test the size of the returned data
+        System.out.println(cities.size());
 
         // Disconnect from database
         a.disconnect();
@@ -113,6 +119,42 @@ public class MainProgram
             }
             else
                 return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    /**
+     * Gets all the current cities populations.
+     * @return A list of all cities and populations, or null if there is an error.
+     */
+    public ArrayList<City> queryNo7()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, Population "
+                            + "FROM city "
+                            + "ORDER BY Population ASC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.Name = rset.getString("city.Name");
+                city.Population = rset.getInt("city.Population");
+                cities.add(city);
+            }
+            return cities;
         }
         catch (Exception e)
         {
