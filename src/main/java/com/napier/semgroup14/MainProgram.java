@@ -88,9 +88,9 @@ public class MainProgram
 
         // Extract info for query #7
         System.out.println("Query 7"+ "\n");
-        ArrayList<City> cities = a.queryNo7();
+        ArrayList<City> cities = a.query7GetList();
         // Run query #7
-        querySeven(cities);
+        query7Display(cities);
 
         // Disconnect from database
         a.disconnect();
@@ -130,11 +130,25 @@ public class MainProgram
         }
     }
 
+    //Method to display a city from the database
+    public void displayCity(City city)
+    {
+        if (city != null)
+        {
+            System.out.println(
+                    city.ID + " "
+                            + city.Name + "\n"
+                            + city.CountryCode + "\n"
+                            + city.District + "\n"
+                            + city.Population + "\n");
+        }
+    }
+
     /**
      * Gets all the current cities populations.
      * @return A list of all cities and populations, or null if there is an error.
      */
-    public ArrayList<City> queryNo7()
+    public ArrayList<City> query7GetList()
     {
         try
         {
@@ -166,29 +180,14 @@ public class MainProgram
         }
     }
 
-    //Method to display a city from the database
-    public void displayCity(City city)
-    {
-        if (city != null)
-        {
-            System.out.println(
-                    city.ID + " "
-                            + city.Name + "\n"
-                            + city.CountryCode + "\n"
-                            + city.District + "\n"
-                            + city.Population + "\n");
-        }
-    }
-
     //Method to display Query7
-    public static void querySeven(ArrayList<City> cities){
+    public static void query7Display(ArrayList<City> cities){
         for (int i = 0; i < cities.size(); i++) {
             if (cities.get(i) != null)
             {
                 System.out.println(
-                        cities.get(i).ID + " "
-                                + cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                         cities.get(i).Name + "\n"
+                                 + cities.get(i).Population + "\n");
             }
         }
     }
