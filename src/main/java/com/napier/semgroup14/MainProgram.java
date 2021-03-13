@@ -14,12 +14,12 @@ public class MainProgram
     /**
      * Connect to the MySQL world database.
      */
-    public void connect()
+    public void connect(String location)
     {
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -34,9 +34,9 @@ public class MainProgram
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(3000);
+                Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
+                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -78,7 +78,7 @@ public class MainProgram
         MainProgram a = new MainProgram();
 
         // Connect to database
-        a.connect();
+        a.connect("localhost:33060");
 
         // Run Test Query
         System.out.println("Test Query"+ "\n");
