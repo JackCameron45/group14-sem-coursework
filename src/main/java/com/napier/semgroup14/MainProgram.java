@@ -123,10 +123,16 @@ public class MainProgram
         query17Display(citiesq17);
 
         // Extract info for query #18
-        System.out.println("Query 18, population of capital cities"+ "\n");
+        System.out.println("Query 18, population of capital cities in Europe"+ "\n");
         ArrayList<City> citiesq18 = a.query18GetList();
         // Run query #18
         query18Display(citiesq18);
+
+        // Extract info for query #19
+        System.out.println("Query 19, population of capital cities in Polynesia"+ "\n");
+        ArrayList<City> citiesq19 = a.query19GetList();
+        // Run query #19
+        query19Display(citiesq19);
 
         // Disconnect from database
         a.disconnect();
@@ -522,6 +528,53 @@ public class MainProgram
         }
     }
 
+    /**
+     * Gets all the current capital cities populations in a region.
+     * @return A list of all apital cities and populations in a region, or null if there is an error.
+     */
+    public ArrayList<City> query19GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.Population "
+                            + "FROM city, country "
+                            + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.capital FROM country WHERE country.Region = 'Polynesia' ) "
+                            + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.Name = rset.getString("city.Name");
+                city.Population = rset.getInt("city.Population");
+                cities.add(city);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
 
+    //Method to display Query19
+    public static void query19Display(ArrayList<City> cities){
+        for (int i = 0; i < cities.size(); i++) {
+            if (cities.get(i) != null)
+            {
+                System.out.println(
+                        cities.get(i).Name + "\n"
+                                + cities.get(i).Population + "\n");
+            }
+        }
+    }
 
 }
