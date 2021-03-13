@@ -72,7 +72,7 @@ public class MainProgram
     }
 
     //Use methods to connect to the database
-    public void main(String[] args)
+    public static void main(String[] args)
     {
         // Create new Application
         MainProgram a = new MainProgram();
@@ -81,13 +81,15 @@ public class MainProgram
         a.connect();
 
         // Run Test Query
+        System.out.println("Test Query"+ "\n");
         City city = a.getCity(247);
         // Display results
         a.displayCity(city);
 
-        // Extract city population information
+        // Extract info for query #7
+        System.out.println("Query 7"+ "\n");
         ArrayList<City> cities = a.queryNo7();
-        // Run Query
+        // Run query #7
         querySeven(cities);
 
         // Disconnect from database
@@ -179,7 +181,7 @@ public class MainProgram
     }
 
     //Method to display Query7
-    public void querySeven(ArrayList<City> cities){
+    public static void querySeven(ArrayList<City> cities){
         for (int i = 0; i < cities.size(); i++) {
             if (cities.get(i) != null)
             {
