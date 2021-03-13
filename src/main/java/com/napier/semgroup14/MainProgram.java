@@ -98,13 +98,11 @@ public class MainProgram
         // Run query #8
         query8Display(citiesq8);
 
-        /* THIS QUERY HAS NO QUERY, MUST BE FIXED
         // Extract info for query #9
-        System.out.println("Query 9, population of cities in region"+ "\n");
+        System.out.println("Query 9, population of cities in region Caribbean"+ "\n");
         ArrayList<City> citiesq9 = a.query9GetList();
         // Run query #9
         query9Display(citiesq9);
-         */
 
         // Extract info for query #10
         System.out.println("Query 10, population of cities in country France"+ "\n");
@@ -251,6 +249,55 @@ public class MainProgram
 
     //Method to display Query8
     public static void query8Display(ArrayList<City> cities){
+        for (int i = 0; i < cities.size(); i++) {
+            if (cities.get(i) != null)
+            {
+                System.out.println(
+                        cities.get(i).Name + "\n"
+                                + cities.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets all the current cities populations in a region.
+     * @return A list of all cities and populations in a region, or null if there is an error.
+     */
+    public ArrayList<City> query9GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, city.Population "
+                            + "FROM city, country "
+                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE country.Region = 'Caribbean' ) "
+                            + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.Name = rset.getString("city.Name");
+                city.Population = rset.getInt("city.Population");
+                cities.add(city);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    //Method to display Query9
+    public static void query9Display(ArrayList<City> cities){
         for (int i = 0; i < cities.size(); i++) {
             if (cities.get(i) != null)
             {
