@@ -87,16 +87,30 @@ public class MainProgram
         a.displayCity(city);
 
         // Extract info for query #7
-        System.out.println("Query 7"+ "\n");
+        System.out.println("Query 7, population of cities in world"+ "\n");
         ArrayList<City> citiesq7 = a.query7GetList();
         // Run query #7
         query7Display(citiesq7);
 
         // Extract info for query #8
-        System.out.println("Query 8"+ "\n");
+        System.out.println("Query 8, population of cities in continent Europe"+ "\n");
         ArrayList<City> citiesq8 = a.query8GetList();
         // Run query #8
         query8Display(citiesq8);
+
+        /* THIS QUERY HAS NO QUERY, MUST BE FIXED
+        // Extract info for query #9
+        System.out.println("Query 9, population of cities in region"+ "\n");
+        ArrayList<City> citiesq9 = a.query9GetList();
+        // Run query #9
+        query9Display(citiesq9);
+         */
+
+        // Extract info for query #10
+        System.out.println("Query 10, population of cities in country France"+ "\n");
+        ArrayList<City> citiesq10 = a.query10GetList();
+        // Run query #10
+        query10Display(citiesq10);
 
         // Disconnect from database
         a.disconnect();
@@ -237,6 +251,55 @@ public class MainProgram
 
     //Method to display Query8
     public static void query8Display(ArrayList<City> cities){
+        for (int i = 0; i < cities.size(); i++) {
+            if (cities.get(i) != null)
+            {
+                System.out.println(
+                        cities.get(i).Name + "\n"
+                                + cities.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets all the current cities populations in a country.
+     * @return A list of all cities and populations in a country, or null if there is an error.
+     */
+    public ArrayList<City> query10GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, city.Population "
+                            + "FROM city, country "
+                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE country.Name = 'France' ) "
+                            + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city = new City();
+                city.Name = rset.getString("city.Name");
+                city.Population = rset.getInt("city.Population");
+                cities.add(city);
+            }
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    //Method to display Query10
+    public static void query10Display(ArrayList<City> cities){
         for (int i = 0; i < cities.size(); i++) {
             if (cities.get(i) != null)
             {
