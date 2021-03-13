@@ -212,10 +212,8 @@ public class MainProgram
             String strSelect =
                     "SELECT city.Name, city.Population "
                             + "FROM city, country "
-                            + "WHERE city.CountryCode = country.Code"
-                            + "AND city.CountryCode IN"
-                            + "(SELECT country.Code FROM country WHERE Continent = \"Europe\" )"
-                            + "ORDER BY Population DESC";
+                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE Continent = 'Europe' ) "
+                            + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
