@@ -92,13 +92,11 @@ public class MainProgram
         // Run query #7
         query7Display(citiesq7);
 
-        /*
         // Extract info for query #8
         System.out.println("Query 8"+ "\n");
         ArrayList<City> citiesq8 = a.query8GetList();
         // Run query #8
         query8Display(citiesq8);
-         */
 
         // Disconnect from database
         a.disconnect();
@@ -204,7 +202,6 @@ public class MainProgram
      * Gets all the current cities populations in a continent.
      * @return A list of all cities and populations in a continent, or null if there is an error.
      */
-    /*
     public ArrayList<City> query8GetList()
     {
         try
@@ -218,7 +215,7 @@ public class MainProgram
                             + "WHERE city.CountryCode = country.Code"
                             + "AND city.CountryCode IN"
                             + "(SELECT country.Code FROM country WHERE Continent = \"Europe\" )"
-                            + "ORDER BY Population ASC";
+                            + "ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -251,7 +248,5 @@ public class MainProgram
             }
         }
     }
-
-     */
 
 }
