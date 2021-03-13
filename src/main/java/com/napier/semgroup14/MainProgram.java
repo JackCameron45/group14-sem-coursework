@@ -72,7 +72,7 @@ public class MainProgram
     }
 
     //Use methods to connect to the database
-    public static void main(String[] args)
+    public void main(String[] args)
     {
         // Create new Application
         MainProgram a = new MainProgram();
@@ -87,8 +87,8 @@ public class MainProgram
 
         // Extract city population information
         ArrayList<City> cities = a.queryNo7();
-        // Test the size of the returned data
-        System.out.println(cities.size());
+        // Run Query
+        querySeven(cities);
 
         // Disconnect from database
         a.disconnect();
@@ -175,6 +175,19 @@ public class MainProgram
                             + city.CountryCode + "\n"
                             + city.District + "\n"
                             + city.Population + "\n");
+        }
+    }
+
+    //Method to display Query7
+    public void querySeven(ArrayList<City> cities){
+        for (int i = 0; i < cities.size(); i++) {
+            if (cities.get(i) != null)
+            {
+                System.out.println(
+                        cities.get(i).ID + " "
+                                + cities.get(i).Name + "\n"
+                                + cities.get(i).Population + "\n");
+            }
         }
     }
 }
