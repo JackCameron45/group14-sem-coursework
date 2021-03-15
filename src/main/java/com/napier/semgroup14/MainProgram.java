@@ -16,8 +16,8 @@ public class MainProgram {
     public void connect() {
         try {
             // Load Database driver
-          //  Class.forName("com.mysql.cj.jdbc.Driver");
-                      Class.forName("com.mysql.jdbc.Driver");
+            // Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
@@ -30,8 +30,8 @@ public class MainProgram {
                 // Wait a bit for db to start
                 Thread.sleep(3000);
                 // Connect to database
-                          con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
-                //  con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/world?useSSL=false", "root", "pass");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
+                //   con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/world?useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {

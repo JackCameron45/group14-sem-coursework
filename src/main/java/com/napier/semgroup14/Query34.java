@@ -19,13 +19,16 @@ public class Query34 {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
 
-            String strSelect = String.format(" SELECT co.Continent, SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code )) AS Cities_Population,  "
-                    + " SUM(co.Population) - SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code )) AS Rural_Population, "
-                    + " FORMAT(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code ))  "
-                    + " / (SUM ( co.Population ) ) *100,2) AS Percentage_Living_in_Cities, "
-                    + " FORMAT(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code ))  "
-                    + " / (SUM(co.Population) ))*100,2) AS Percentage_Living_in_Rural_Areas "
-                    + " FROM country co  GROUP BY co.Continent  ORDER BY co.Continent ASC);");
+            String strSelect = (" SELECT co.Continent, "
+                    + " SUM((SELECT sum(ci.Population) FROM city ci "
+                    + " WHERE ci.CountryCode = co.Code)) AS Cities_Population, "
+                    + " SUM(co.Population) "
+                    + " -SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) AS Rural_Population, "
+                    + " FORMAT(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code))   "
+                    + " /(SUM(co.Population)) *100,2) AS Percentage_Living_in_Cities, "
+                    + " FORMAT(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code))  "
+                    + " /(SUM(co.Population)))*100,2) AS Percentage_Living_in_Rural_Areas "
+                    + " FROM country co  GROUP BY co.Continent  ORDER BY co.Continent ASC");
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -42,9 +45,9 @@ public class Query34 {
                     Country country = new Country();
                     CountryLanguage countryLanguage = new CountryLanguage();
 
-                    country.continent = rset.getString("country.Continent");
+                    country.continent = rset.getString("co.Continent");
                     city.Population = rset.getInt("Cities_Population");
-                    city.ID = rset.getInt("Rural_Population");
+                    country.lifeExpectancy = rset.getBigDecimal("Rural_Population");
                     country.gNP = rset.getBigDecimal("Percentage_Living_in_Cities");
                     country.gNPOld = rset.getBigDecimal("Percentage_Living_in_Rural_Areas");
 
@@ -53,13 +56,14 @@ public class Query34 {
                 }
 
                 // display each country fields in  Countries objects list
-                System.out.println("Continent,    Cities_Population, Rural_Population ,  Percentage_Living_in_Cities, Percentage_Living_in_Rural_Areas");
+                System.out.println("Continent:   Cities Population:  Rural Population: Percent Living in Cities: Percent Living in Rural Areas:");
                 for (zCityCountryLanguage eachThree : CityCountryLanguageThrees) {
-                    System.out.println(eachThree.getCountry().continent + "  "
-                            + eachThree.getCity().Population + "  "
-                            + eachThree.getCity().ID + "  "
-                            + eachThree.getCountry().gNP + "  "
-                            + eachThree.getCountry().gNPOld);
+                    System.out.printf("%-16s   %12d    %13.0f   %18.2f   %18.2f \n",
+                            eachThree.getCountry().continent,
+                            eachThree.getCity().Population,
+                            eachThree.getCountry().lifeExpectancy,
+                            eachThree.getCountry().gNP,
+                            eachThree.getCountry().gNPOld);
                 }
             }
 
