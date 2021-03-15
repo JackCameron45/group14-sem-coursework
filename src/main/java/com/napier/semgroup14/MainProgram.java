@@ -80,11 +80,41 @@ public class MainProgram
         // Connect to database
         a.connect();
 
-        // Run Test Query
-        System.out.println("Test Query"+ "\n");
-        City city = a.getCity(247);
-        // Display results
-        a.displayCity(city);
+        // Extract info for query #1
+        System.out.println("Query 1, population of countries in world"+ "\n");
+        ArrayList<Country> citiesq1 = a.query1GetList();
+        // Run query #1
+        query1Display(citiesq1);
+
+        // Extract info for query #2
+        System.out.println("Query 2, population of countries in Asia"+ "\n");
+        ArrayList<Country> citiesq2 = a.query2GetList();
+        // Run query #2
+        query2Display(citiesq2);
+
+        // Extract info for query #3
+        System.out.println("Query 3, population of countries in Caribbean"+ "\n");
+        ArrayList<Country> citiesq3 = a.query3GetList();
+        // Run query #3
+        query3Display(citiesq3);
+
+        // Extract info for query #4
+        System.out.println("Query 4, top N populated Countries"+ "\n");
+        ArrayList<Country> citiesq4 = a.query4GetList();
+        // Run query #4
+        query4Display(citiesq4);
+
+        // Extract info for query #5
+        System.out.println("Query 5, top N populated Countries in Europe"+ "\n");
+        ArrayList<Country> citiesq5 = a.query5GetList();
+        // Run query #5
+        query5Display(citiesq5);
+
+        // Extract info for query #6
+        System.out.println("Query 6, top N populated Countries in the Caribbean"+ "\n");
+        ArrayList<Country> citiesq6 = a.query6GetList();
+        // Run query #6
+        query6Display(citiesq6);
 
         // Extract info for query #7
         System.out.println("Query 7, population of cities in world"+ "\n");
@@ -182,6 +212,42 @@ public class MainProgram
         // Run query #22
         query22Display(citiesq22);
 
+        // Extract info for query #26
+        System.out.println("Query 26, population of the world"+ "\n");
+        ArrayList<Country> citiesq26 = a.query26GetList();
+        // Run query #26
+        query26Display(citiesq26);
+
+        // Extract info for query #27
+        System.out.println("Query 27, population of Europe"+ "\n");
+        ArrayList<Country> citiesq27 = a.query27GetList();
+        // Run query #27
+        query27Display(citiesq27);
+
+        // Extract info for query #28
+        System.out.println("Query 28, population of the Caribbean"+ "\n");
+        ArrayList<Country> citiesq28 = a.query28GetList();
+        // Run query #28
+        query28Display(citiesq28);
+
+        // Extract info for query #29
+        System.out.println("Query 29, population of France"+ "\n");
+        ArrayList<Country> citiesq29 = a.query29GetList();
+        // Run query #29
+        query29Display(citiesq29);
+
+        // Extract info for query #30
+        System.out.println("Query 30, population of Baijeri"+ "\n");
+        ArrayList<Country> citiesq30 = a.query30GetList();
+        // Run query #30
+        query30Display(citiesq30);
+
+        // Extract info for query #31
+        System.out.println("Query 31, population of Paris"+ "\n");
+        ArrayList<Country> citiesq31 = a.query31GetList();
+        // Run query #31
+        query31Display(citiesq31);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -235,6 +301,301 @@ public class MainProgram
     }
 
     /**
+     * Gets all the countries populations in the world.
+     * @return A list of all countries populations in the world, or null if there is an error.
+     */
+    public ArrayList<Country> query1GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.Population "
+                            + "FROM country "
+                            + "ORDER BY country.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Name = rset.getString("country.Name");
+                country.Population = rset.getInt("country.Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query1
+    public static void query1Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Name + "\n"
+                                + countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets all the countries populations in the continent.
+     * @return A list of all countries populations in the continent, or null if there is an error.
+     */
+    public ArrayList<Country> query2GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.Population "
+                            + "FROM country "
+                            + "WHERE country.Continent = 'Asia' "
+                            + "ORDER BY country.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Name = rset.getString("country.Name");
+                country.Population = rset.getInt("country.Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query2
+    public static void query2Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Name + "\n"
+                                + countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets all the countries populations in the region.
+     * @return A list of all countries populations in the region, or null if there is an error.
+     */
+    public ArrayList<Country> query3GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.Population "
+                            + "FROM country "
+                            + "WHERE country.Region = 'Caribbean' "
+                            + "ORDER BY country.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Name = rset.getString("country.Name");
+                country.Population = rset.getInt("country.Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query3
+    public static void query3Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Name + "\n"
+                                + countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets all the top N countries populations.
+     * @return A list of all top N countries populations, or null if there is an error.
+     */
+    public ArrayList<Country> query4GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.Population "
+                            + "FROM country "
+                            + "ORDER BY country.Population DESC "
+                            + "LIMIT 5";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Name = rset.getString("country.Name");
+                country.Population = rset.getInt("country.Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query4
+    public static void query4Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Name + "\n"
+                                + countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets all the top N countries populations.
+     * @return A list of all top N countries populations, or null if there is an error.
+     */
+    public ArrayList<Country> query5GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.Population "
+                            + "FROM country "
+                            + "WHERE country.Continent = 'Europe' "
+                            + "ORDER BY country.Population DESC "
+                            + "LIMIT 5";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Name = rset.getString("country.Name");
+                country.Population = rset.getInt("country.Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query5
+    public static void query5Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Name + "\n"
+                                + countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets all the top N countries populations.
+     * @return A list of all top N countries populations, or null if there is an error.
+     */
+    public ArrayList<Country> query6GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.Population "
+                            + "FROM country "
+                            + "WHERE country.Region = 'Caribbean' "
+                            + "ORDER BY country.Population DESC "
+                            + "LIMIT 5";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Name = rset.getString("country.Name");
+                country.Population = rset.getInt("country.Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query6
+    public static void query6Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Name + "\n"
+                                + countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
      * Gets all the current cities populations in the world.
      * @return A list of all cities and populations in the world, or null if there is an error.
      */
@@ -276,8 +637,8 @@ public class MainProgram
             if (cities.get(i) != null)
             {
                 System.out.println(
-                         cities.get(i).Name + "\n"
-                                 + cities.get(i).Population + "\n");
+                        cities.get(i).Name + "\n"
+                                + cities.get(i).Population + "\n");
             }
         }
     }
@@ -1024,6 +1385,279 @@ public class MainProgram
         }
     }
 
+    /**
+     * Gets world population.
+     * @return A list of the world population, or null if there is an error.
+     */
+    public ArrayList<Country> query26GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.Population) AS population "
+                            + "FROM country";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Population = rset.getLong("population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
 
+    //Method to display Query26
+    public static void query26Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets continent population.
+     * @return A list of the continent population, or null if there is an error.
+     */
+    public ArrayList<Country> query27GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.Population) AS Continent_Population "
+                            + "FROM country "
+                            + "WHERE country.Continent = 'Europe'";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Population = rset.getLong("Continent_Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query27
+    public static void query27Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets region population.
+     * @return A list of the region population, or null if there is an error.
+     */
+    public ArrayList<Country> query28GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.Population) AS Region_Population "
+                            + "FROM country "
+                            + "WHERE country.Region = 'Caribbean'";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Population = rset.getLong("Region_Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query28
+    public static void query28Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets country population.
+     * @return A list of the country population, or null if there is an error.
+     */
+    public ArrayList<Country> query29GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.Population) AS Country_Population "
+                            + "FROM country "
+                            + "WHERE country.Name = 'France'";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Population = rset.getLong("Country_Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query29
+    public static void query29Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets district population.
+     * @return A list of the district population, or null if there is an error.
+     */
+    public ArrayList<Country> query30GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(city.Population) AS District_Population "
+                            + "FROM city "
+                            + "WHERE city.District = 'Baijeri'";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Population = rset.getLong("District_Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query30
+    public static void query30Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets city population.
+     * @return A list of the city population, or null if there is an error.
+     */
+    public ArrayList<Country> query31GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Population "
+                            + "FROM city "
+                            + "WHERE city.Name = 'Paris'";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.Population = rset.getLong("city.Population");
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query31
+    public static void query31Display(ArrayList<Country> countries){
+        for (int i = 0; i < countries.size(); i++) {
+            if (countries.get(i) != null)
+            {
+                System.out.println(
+                        countries.get(i).Population + "\n");
+            }
+        }
+    }
 
 }
