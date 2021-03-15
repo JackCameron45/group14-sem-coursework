@@ -19,6 +19,7 @@ public class MainProgram
         try
         {
             // Load Database driver
+ //           Class.forName("com.mysql.cj.jdbc.Driver");
             Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
@@ -37,6 +38,7 @@ public class MainProgram
                 Thread.sleep(3000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
+//                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/world?useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -182,6 +184,19 @@ public class MainProgram
         // Run query #22
         query22Display(citiesq22);
 
+        System.out.println("\n" + "Query 5, top 5 populated countries in a continent: Europe");
+        Query05 query05List = new Query05();
+        query05List.Query05GetAndDisplayList("Europe", a.con);
+
+        System.out.println("\n" + "Query 6, top 5 populated countries in region Caribbean" );
+        Query06 query06List = new Query06();
+        query06List.Query06GetAndDisplayList("Caribbean", a.con);
+
+        System.out.println("\n" + "Query 6, top 5 populated countries in region Caribbean" );
+        Query06 query06List = new Query06();
+        query06List.Query06GetAndDisplayList("Caribbean", a.con);
+         
+         
         // Disconnect from database
         a.disconnect();
     }
@@ -1023,7 +1038,4 @@ public class MainProgram
             }
         }
     }
-
-
-
 }
