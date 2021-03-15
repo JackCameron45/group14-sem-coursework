@@ -9,12 +9,20 @@ public class CityAndCountry {
 
     public String CountryName;
 
-    public int CityPopulation;
+    public Long CityPopulation;
+
+    public Long RuralPopulation;
+
+    public float CityPercentage;
+
+    public float RuralPercentage;
 
     public String Language;
 
     public int LanguageSpeakers;
 
     public float LanguagePercentage;
+
+    public String Continent;
 
 }

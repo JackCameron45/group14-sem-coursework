@@ -254,6 +254,18 @@ public class MainProgram
         // Run query #32
         query32Display(citiesq32);
 
+        // Extract info for query #33
+        System.out.println("Query 33, Amount of language speakers in the world"+ "\n");
+        ArrayList<CityAndCountry> citiesq33 = a.query33GetList();
+        // Run query #33
+        query33Display(citiesq33);
+
+        // Extract info for query #34
+        System.out.println("Query 34, Population living in cities and rural areas"+ "\n");
+        ArrayList<CityAndCountry> citiesq34 = a.query34GetList();
+        // Run query #34
+        query34Display(citiesq34);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -1690,7 +1702,7 @@ public class MainProgram
                 CityAndCountry cityandcountry = new CityAndCountry();
                 cityandcountry.CityName = rset.getString("city.Name");
                 cityandcountry.CountryName = rset.getString("country.Name");
-                cityandcountry.CityPopulation = rset.getInt("city.Population");
+                cityandcountry.CityPopulation = rset.getLong("city.Population");
                 reports.add(cityandcountry);
             }
             return reports;
@@ -1745,7 +1757,7 @@ public class MainProgram
             {
                 CityAndCountry cityandcountry = new CityAndCountry();
                 cityandcountry.Language = rset.getString("countrylanguage.Language");
-                cityandcountry.LanguageSpeakers = rset.getInt("World_Population");
+                cityandcountry.LanguageSpeakers = rset.getInt("Population");
                 cityandcountry.LanguagePercentage = rset.getFloat("Percentage_of_The_World_Population");
                 reports.add(cityandcountry);
             }
@@ -1768,6 +1780,67 @@ public class MainProgram
                         reports.get(i).Language + "\n"
                                 + reports.get(i).LanguageSpeakers + "\n"
                                 + reports.get(i).LanguagePercentage + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets language report.
+     * @return A report of the languages, or null if there is an error.
+     */
+    public ArrayList<CityAndCountry> query34GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT co.Continent, "
+                            + "SUM((SELECT sum(ci.Population) FROM city ci "
+                            + "WHERE ci.CountryCode = co.Code)) AS Cities_Population, "
+                            + "SUM(co.Population) "
+                            + "-SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) AS Rural_Population, "
+                            + "FORMAT(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "/(SUM(co.Population)) *100,2) AS Percentage_Living_in_Cities, "
+                            + "FORMAT(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "/(SUM(co.Population)))*100,2) AS Percentage_Living_in_Rural_Areas "
+                            + "FROM country co  GROUP BY co.Continent  ORDER BY co.Continent ASC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            while (rset.next())
+            {
+                CityAndCountry cityandcountry = new CityAndCountry();
+                cityandcountry.Continent = rset.getString("co.Continent");
+                cityandcountry.CityPopulation = rset.getLong("Cities_Population");
+                cityandcountry.CityPercentage = rset.getFloat("Percentage_Living_in_Cities");
+                cityandcountry.RuralPopulation = rset.getLong("Rural_Population");
+                cityandcountry.RuralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
+                reports.add(cityandcountry);
+            }
+            return reports;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query34
+    public static void query34Display(ArrayList<CityAndCountry> reports){
+        for (int i = 0; i < reports.size(); i++) {
+            if (reports.get(i) != null)
+            {
+                System.out.println(
+                        "Continent: " + reports.get(i).Continent + "\n"
+                                + "City Population: " + reports.get(i).CityPopulation + "\n"
+                                + "City Percentage: " + reports.get(i).CityPercentage + "\n"
+                                + "Rural Population: " + reports.get(i).RuralPopulation + "\n"
+                                + "Rural Percentage: " + reports.get(i).RuralPercentage + "\n");
             }
         }
     }
