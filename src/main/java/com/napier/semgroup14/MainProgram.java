@@ -19,7 +19,7 @@ public class MainProgram
         try
         {
             // Load Database driver
- //           Class.forName("com.mysql.cj.jdbc.Driver");
+ //          Class.forName("com.mysql.cj.jdbc.Driver");
             Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
@@ -87,6 +87,15 @@ public class MainProgram
         City city = a.getCity(247);
         // Display results
         a.displayCity(city);
+
+
+        System.out.println("\n" + "Query 5, top 5 populated countries in a continent: Europe");
+        Query05 query05 = new Query05();
+        query05.getAndDisplayList("Europe", a.con);
+
+        System.out.println("\n" + "Query 6, top 5 populated countries in region Caribbean" );
+        Query06 query06 = new Query06();
+        query06.getAndDisplayList("Caribbean", a.con);
 
         // Extract info for query #7
         System.out.println("Query 7, population of cities in world"+ "\n");
@@ -184,19 +193,39 @@ public class MainProgram
         // Run query #22
         query22Display(citiesq22);
 
-        System.out.println("\n" + "Query 5, top 5 populated countries in a continent: Europe");
-        Query05 query05List = new Query05();
-        query05List.Query05GetAndDisplayList("Europe", a.con);
+        System.out.println("\n" + "Query 26, Total population of the World" );
+        Query26 query26List = new Query26();
+        query26List.Query26GetAndDisplayList( a.con);
 
-        System.out.println("\n" + "Query 6, top 5 populated countries in region Caribbean" );
-        Query06 query06List = new Query06();
-        query06List.Query06GetAndDisplayList("Caribbean", a.con);
+        System.out.println("\n" + "Query 27, Total population of Europe:" );
+        Query27 query27 = new Query27();
+        query27.Query27GetAndDisplayList("Europe", a.con);
 
-        System.out.println("\n" + "Query 6, top 5 populated countries in region Caribbean" );
-        Query06 query06List = new Query06();
-        query06List.Query06GetAndDisplayList("Caribbean", a.con);
-         
-         
+        System.out.println("\n" + "Query 28, Total population of Caribbean:" );
+        Query28 query28 = new Query28();
+        query28.Query28GetAndDisplayList("Caribbean", a.con);
+
+        System.out.println("\n" + "Query 29, Total population of France:" );
+        Query29 query29 = new Query29();
+        query29.getAndDisplayList("France", a.con);
+
+        System.out.println("\n" + "Query 30, Total population of Baijeri district:" );
+        Query30 query30 = new Query30();
+        query30.getAndDisplayList("Baijeri", a.con);
+
+        System.out.println("\n" + "Query 31, Total population of Paris:" );
+        Query31 query31 = new Query31();
+        query31.getAndDisplayList("Paris", a.con);
+
+   //   System.out.println("\n" + "Query 32, Capital City Report. A capital city report requires the following columns: Name, Country, Population:" );
+   //    Query32 query32 = new Query32();
+   //    query32.getAndDisplayList("Paris", a.con);
+
+
+
+
+
+
         // Disconnect from database
         a.disconnect();
     }

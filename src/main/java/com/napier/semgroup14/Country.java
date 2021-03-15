@@ -14,7 +14,7 @@ public class Country {
     public String region;
     public String surfaceArea;
     public String indepYear;
-    public int population;
+    public long population;
     public BigDecimal lifeExpectancy;
     public BigDecimal gNP;
     public BigDecimal gNPOld;
@@ -69,11 +69,11 @@ public class Country {
         this.indepYear = indepYear;
     }
 
-    public int getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 

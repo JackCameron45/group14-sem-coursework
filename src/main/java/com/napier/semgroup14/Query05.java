@@ -11,7 +11,7 @@ public class Query05 {
     }
 
 
-    public void Query05GetAndDisplayList(String continent, Connection con) {
+    public void getAndDisplayList(String continent, Connection con) {
 
         // class returning list of objects (records extracted from SQL query)
         try {
