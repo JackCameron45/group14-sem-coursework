@@ -34,7 +34,7 @@ public class MainProgram
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
@@ -247,6 +247,12 @@ public class MainProgram
         ArrayList<Country> citiesq31 = a.query31GetList();
         // Run query #31
         query31Display(citiesq31);
+
+        // Extract info for query #32
+        System.out.println("Query 32, Capital City Report"+ "\n");
+        ArrayList<CityAndCountry> citiesq32 = a.query32GetList();
+        // Run query #32
+        query32Display(citiesq32);
 
         // Disconnect from database
         a.disconnect();
@@ -1656,6 +1662,112 @@ public class MainProgram
             {
                 System.out.println(
                         countries.get(i).Population + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets capital city report.
+     * @return A report of the capital city, or null if there is an error.
+     */
+    public ArrayList<CityAndCountry> query32GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name, city.Population "
+                            + "FROM country, city "
+                            + "WHERE city.ID = country.Capital";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            while (rset.next())
+            {
+                CityAndCountry cityandcountry = new CityAndCountry();
+                cityandcountry.CityName = rset.getString("city.Name");
+                cityandcountry.CountryName = rset.getString("country.Name");
+                cityandcountry.CityPopulation = rset.getInt("city.Population");
+                reports.add(cityandcountry);
+            }
+            return reports;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query32
+    public static void query32Display(ArrayList<CityAndCountry> reports){
+        for (int i = 0; i < reports.size(); i++) {
+            if (reports.get(i) != null)
+            {
+                System.out.println(
+                        reports.get(i).CountryName + "\n"
+                                + reports.get(i).CityName + "\n"
+                                + reports.get(i).CityPopulation + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets language report.
+     * @return A report of the languages, or null if there is an error.
+     */
+    public ArrayList<CityAndCountry> query33GetList()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT countrylanguage.Language, SUM(country.Population) AS Population, "
+                            + "FORMAT((SUM(country.Population)/(SELECT SUM(country.Population) AS World_Population "
+                            + "FROM  country))*100,2)  AS Percentage_of_The_World_Population "
+                            + "FROM country, countrylanguage "
+                            + "WHERE  country.Code = countrylanguage.CountryCode "
+                            + "AND countrylanguage.Language "
+                            + "IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic')"
+                            + "GROUP BY countrylanguage.Language "
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            while (rset.next())
+            {
+                CityAndCountry cityandcountry = new CityAndCountry();
+                cityandcountry.Language = rset.getString("countrylanguage.Language");
+                cityandcountry.LanguageSpeakers = rset.getInt("World_Population");
+                cityandcountry.LanguagePercentage = rset.getFloat("Percentage_of_The_World_Population");
+                reports.add(cityandcountry);
+            }
+            return reports;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query33
+    public static void query33Display(ArrayList<CityAndCountry> reports){
+        for (int i = 0; i < reports.size(); i++) {
+            if (reports.get(i) != null)
+            {
+                System.out.println(
+                        reports.get(i).Language + "\n"
+                                + reports.get(i).LanguageSpeakers + "\n"
+                                + reports.get(i).LanguagePercentage + "\n");
             }
         }
     }
