@@ -23,7 +23,7 @@ public class Query27 {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Return new employee if valid.
+            // Return new query results if valid.
             // Check one is returned
 
             if (rset.isBeforeFirst()) {
@@ -43,7 +43,7 @@ public class Query27 {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get employee details");
+            System.out.println("Failed to get country details");
         }
     }
 }
