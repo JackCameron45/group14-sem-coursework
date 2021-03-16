@@ -282,7 +282,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Name = rset.getString("country.Name");
@@ -299,11 +299,11 @@ public class MainProgram {
 
     //Method to display Query1
     public static void query1Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Name + "\n"
-                                + countries.get(i).Population + "\n");
+                        country.Name + "\n"
+                                + country.Population + "\n");
             }
         }
     }
@@ -326,7 +326,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Name = rset.getString("country.Name");
@@ -343,11 +343,11 @@ public class MainProgram {
 
     //Method to display Query2
     public static void query2Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Name + "\n"
-                                + countries.get(i).Population + "\n");
+                        country.Name + "\n"
+                                + country.Population + "\n");
             }
         }
     }
@@ -370,7 +370,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Name = rset.getString("country.Name");
@@ -387,11 +387,11 @@ public class MainProgram {
 
     //Method to display Query3
     public static void query3Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Name + "\n"
-                                + countries.get(i).Population + "\n");
+                        country.Name + "\n"
+                                + country.Population + "\n");
             }
         }
     }
@@ -414,7 +414,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Name = rset.getString("country.Name");
@@ -431,11 +431,11 @@ public class MainProgram {
 
     //Method to display Query4
     public static void query4Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Name + "\n"
-                                + countries.get(i).Population + "\n");
+                        country.Name + "\n"
+                                + country.Population + "\n");
             }
         }
     }
@@ -459,7 +459,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Name = rset.getString("country.Name");
@@ -476,11 +476,11 @@ public class MainProgram {
 
     //Method to display Query5
     public static void query5Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Name + "\n"
-                                + countries.get(i).Population + "\n");
+                        country.Name + "\n"
+                                + country.Population + "\n");
             }
         }
     }
@@ -504,7 +504,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Name = rset.getString("country.Name");
@@ -521,11 +521,11 @@ public class MainProgram {
 
     //Method to display Query6
     public static void query6Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Name + "\n"
-                                + countries.get(i).Population + "\n");
+                        country.Name + "\n"
+                                + country.Population + "\n");
             }
         }
     }
@@ -547,7 +547,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -564,11 +564,11 @@ public class MainProgram {
 
     //Method to display Query7
     public static void query7Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -591,7 +591,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -608,11 +608,11 @@ public class MainProgram {
 
     //Method to display Query8
     public static void query8Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -635,7 +635,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -652,11 +652,11 @@ public class MainProgram {
 
     //Method to display Query9
     public static void query9Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -679,7 +679,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -696,11 +696,11 @@ public class MainProgram {
 
     //Method to display Query10
     public static void query10Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -723,7 +723,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -740,11 +740,11 @@ public class MainProgram {
 
     //Method to display Query11
     public static void query11Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -767,7 +767,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -784,11 +784,11 @@ public class MainProgram {
 
     //Method to display Query12
     public static void query12Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -812,7 +812,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -829,11 +829,11 @@ public class MainProgram {
 
     //Method to display Query13
     public static void query13Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -857,7 +857,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -874,11 +874,11 @@ public class MainProgram {
 
     //Method to display Query14
     public static void query14Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -902,7 +902,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -919,11 +919,11 @@ public class MainProgram {
 
     //Method to display Query15
     public static void query15Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -947,7 +947,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -964,11 +964,11 @@ public class MainProgram {
 
     //Method to display Query16
     public static void query16Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -976,7 +976,7 @@ public class MainProgram {
     /**
      * Gets all the current capital cities populations in the world.
      *
-     * @return A list of all apital cities and populations in the world, or null if there is an error.
+     * @return A list of all capital cities and populations in the world, or null if there is an error.
      */
     public ArrayList<City> query17GetList() {
         try {
@@ -991,7 +991,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -1008,11 +1008,11 @@ public class MainProgram {
 
     //Method to display Query17
     public static void query17Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -1020,7 +1020,7 @@ public class MainProgram {
     /**
      * Gets all the current capital cities populations in a continent.
      *
-     * @return A list of all apital cities and populations in a continent, or null if there is an error.
+     * @return A list of all capital cities and populations in a continent, or null if there is an error.
      */
     public ArrayList<City> query18GetList() {
         try {
@@ -1035,7 +1035,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -1052,11 +1052,11 @@ public class MainProgram {
 
     //Method to display Query18
     public static void query18Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -1064,7 +1064,7 @@ public class MainProgram {
     /**
      * Gets all the current capital cities populations in a region.
      *
-     * @return A list of all apital cities and populations in a region, or null if there is an error.
+     * @return A list of all capital cities and populations in a region, or null if there is an error.
      */
     public ArrayList<City> query19GetList() {
         try {
@@ -1079,7 +1079,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -1096,11 +1096,11 @@ public class MainProgram {
 
     //Method to display Query19
     public static void query19Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -1124,7 +1124,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -1141,11 +1141,11 @@ public class MainProgram {
 
     //Method to display Query20
     public static void query20Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -1169,7 +1169,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -1186,11 +1186,11 @@ public class MainProgram {
 
     //Method to display Query21
     public static void query21Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -1214,7 +1214,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
@@ -1231,11 +1231,11 @@ public class MainProgram {
 
     //Method to display Query22
     public static void query22Display(ArrayList<City> cities) {
-        for (int i = 0; i < cities.size(); i++) {
-            if (cities.get(i) != null) {
+        for (City city : cities) {
+            if (city != null) {
                 System.out.println(
-                        cities.get(i).Name + "\n"
-                                + cities.get(i).Population + "\n");
+                        city.Name + "\n"
+                                + city.Population + "\n");
             }
         }
     }
@@ -1264,7 +1264,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
                 cityandcountry.Continent = rset.getString("co.Continent");
@@ -1284,14 +1284,14 @@ public class MainProgram {
 
     //Method to display Query23
     public static void query23Display(ArrayList<CityAndCountry> reports) {
-        for (int i = 0; i < reports.size(); i++) {
-            if (reports.get(i) != null) {
+        for (CityAndCountry report : reports) {
+            if (report != null) {
                 System.out.println(
-                        "Continent: " + reports.get(i).Continent + "\n"
-                                + "City Population: " + reports.get(i).CityPopulation + "\n"
-                                + "City Percentage: " + reports.get(i).CityPercentage + "\n"
-                                + "Rural Population: " + reports.get(i).RuralPopulation + "\n"
-                                + "Rural Percentage: " + reports.get(i).RuralPercentage + "\n");
+                        "Continent: " + report.Continent + "\n"
+                                + "City Population: " + report.CityPopulation + "\n"
+                                + "City Percentage: " + report.CityPercentage + "\n"
+                                + "Rural Population: " + report.RuralPopulation + "\n"
+                                + "Rural Percentage: " + report.RuralPercentage + "\n");
             }
         }
     }
@@ -1320,7 +1320,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
                 cityandcountry.Region = rset.getString("co.Region");
@@ -1362,7 +1362,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
                 cityandcountry.CountryName = rset.getString("co.Name");
@@ -1382,28 +1382,28 @@ public class MainProgram {
 
     //Method to display Query25
     public static void query25Display(ArrayList<CityAndCountry> reports) {
-        for (int i = 0; i < reports.size(); i++) {
-            if (reports.get(i) != null) {
+        for (CityAndCountry report : reports) {
+            if (report != null) {
                 System.out.println(
-                        "Country: " + reports.get(i).CountryName + "\n"
-                                + "City Population: " + reports.get(i).CityPopulation + "\n"
-                                + "City Percentage: " + reports.get(i).CityPercentage + "\n"
-                                + "Rural Population: " + reports.get(i).RuralPopulation + "\n"
-                                + "Rural Percentage: " + reports.get(i).RuralPercentage + "\n");
+                        "Country: " + report.CountryName + "\n"
+                                + "City Population: " + report.CityPopulation + "\n"
+                                + "City Percentage: " + report.CityPercentage + "\n"
+                                + "Rural Population: " + report.RuralPopulation + "\n"
+                                + "Rural Percentage: " + report.RuralPercentage + "\n");
             }
         }
     }
 
     //Method to display Query24
     public static void query24Display(ArrayList<CityAndCountry> reports) {
-        for (int i = 0; i < reports.size(); i++) {
-            if (reports.get(i) != null) {
+        for (CityAndCountry report : reports) {
+            if (report != null) {
                 System.out.println(
-                        "Region: " + reports.get(i).Region + "\n"
-                                + "City Population: " + reports.get(i).CityPopulation + "\n"
-                                + "City Percentage: " + reports.get(i).CityPercentage + "\n"
-                                + "Rural Population: " + reports.get(i).RuralPopulation + "\n"
-                                + "Rural Percentage: " + reports.get(i).RuralPercentage + "\n");
+                        "Region: " + report.Region + "\n"
+                                + "City Population: " + report.CityPopulation + "\n"
+                                + "City Percentage: " + report.CityPercentage + "\n"
+                                + "Rural Population: " + report.RuralPopulation + "\n"
+                                + "Rural Percentage: " + report.RuralPercentage + "\n");
             }
         }
     }
@@ -1424,7 +1424,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Population = rset.getLong("population");
@@ -1440,10 +1440,10 @@ public class MainProgram {
 
     //Method to display Query26
     public static void query26Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Population + "\n");
+                        country.Population + "\n");
             }
         }
     }
@@ -1465,7 +1465,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Population = rset.getLong("Continent_Population");
@@ -1481,10 +1481,10 @@ public class MainProgram {
 
     //Method to display Query27
     public static void query27Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Population + "\n");
+                        country.Population + "\n");
             }
         }
     }
@@ -1506,7 +1506,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Population = rset.getLong("Region_Population");
@@ -1522,10 +1522,10 @@ public class MainProgram {
 
     //Method to display Query28
     public static void query28Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Population + "\n");
+                        country.Population + "\n");
             }
         }
     }
@@ -1547,7 +1547,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Population = rset.getLong("Country_Population");
@@ -1563,10 +1563,10 @@ public class MainProgram {
 
     //Method to display Query29
     public static void query29Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Population + "\n");
+                        country.Population + "\n");
             }
         }
     }
@@ -1588,7 +1588,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Population = rset.getLong("District_Population");
@@ -1604,10 +1604,10 @@ public class MainProgram {
 
     //Method to display Query30
     public static void query30Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Population + "\n");
+                        country.Population + "\n");
             }
         }
     }
@@ -1629,7 +1629,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
                 country.Population = rset.getLong("city.Population");
@@ -1645,10 +1645,10 @@ public class MainProgram {
 
     //Method to display Query31
     public static void query31Display(ArrayList<Country> countries) {
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i) != null) {
+        for (Country country : countries) {
+            if (country != null) {
                 System.out.println(
-                        countries.get(i).Population + "\n");
+                        country.Population + "\n");
             }
         }
     }
@@ -1670,7 +1670,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
                 cityandcountry.CityName = rset.getString("city.Name");
@@ -1688,12 +1688,12 @@ public class MainProgram {
 
     //Method to display Query32
     public static void query32Display(ArrayList<CityAndCountry> reports) {
-        for (int i = 0; i < reports.size(); i++) {
-            if (reports.get(i) != null) {
+        for (CityAndCountry report : reports) {
+            if (report != null) {
                 System.out.println(
-                        "Country Name : " + reports.get(i).CountryName + "\n"
-                                + "Capital City Name : " + reports.get(i).CityName + "\n"
-                                + "Capital City Population : " + reports.get(i).CityPopulation + "\n");
+                        "Country Name : " + report.CountryName + "\n"
+                                + "Capital City Name : " + report.CityName + "\n"
+                                + "Capital City Population : " + report.CityPopulation + "\n");
             }
         }
     }
@@ -1721,7 +1721,7 @@ public class MainProgram {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
-            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
                 cityandcountry.Language = rset.getString("countrylanguage.Language");
@@ -1739,12 +1739,12 @@ public class MainProgram {
 
     //Method to display Query33
     public static void query33Display(ArrayList<CityAndCountry> reports) {
-        for (int i = 0; i < reports.size(); i++) {
-            if (reports.get(i) != null) {
+        for (CityAndCountry report : reports) {
+            if (report != null) {
                 System.out.println(
-                        "Language : " + reports.get(i).Language + "\n"
-                                + "Amount of Speakers : " + reports.get(i).LanguageSpeakers + "\n"
-                                + "Percentage of Speakers : " + reports.get(i).LanguagePercentage + "\n");
+                        "Language : " + report.Language + "\n"
+                                + "Amount of Speakers : " + report.LanguageSpeakers + "\n"
+                                + "Percentage of Speakers : " + report.LanguagePercentage + "\n");
             }
         }
     }
