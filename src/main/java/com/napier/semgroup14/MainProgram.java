@@ -20,6 +20,7 @@ public class MainProgram
         {
             // Load Database driver
             Class.forName("com.mysql.jdbc.Driver");
+//            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -33,10 +34,9 @@ public class MainProgram
             System.out.println("Connecting to database...");
             try
             {
-                // Wait a bit for db to start
-                Thread.sleep(5000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
+//                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/world?useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -44,10 +44,12 @@ public class MainProgram
             {
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
-            }
-            catch (InterruptedException ie)
-            {
-                System.out.println("Thread interrupted? Should not happen.");
+                try {
+                    // Wait a bit for db to start
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    System.out.println("Thread interrupted? Should not happen.");
+                }
             }
         }
     }
@@ -1844,5 +1846,4 @@ public class MainProgram
             }
         }
     }
-
 }
