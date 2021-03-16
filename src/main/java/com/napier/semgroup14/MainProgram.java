@@ -35,6 +35,7 @@ public class MainProgram
             try
             {
                 // Connect to database
+                System.out.println("Connecting to db:3306/world");
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
 //                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/world?useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
