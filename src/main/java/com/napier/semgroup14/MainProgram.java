@@ -1691,9 +1691,9 @@ public class MainProgram {
         for (int i = 0; i < reports.size(); i++) {
             if (reports.get(i) != null) {
                 System.out.println(
-                        reports.get(i).CountryName + "\n"
-                                + reports.get(i).CityName + "\n"
-                                + reports.get(i).CityPopulation + "\n");
+                        "Country Name : " + reports.get(i).CountryName + "\n"
+                                + "Capital City Name : " + reports.get(i).CityName + "\n"
+                                + "Capital City Population : " + reports.get(i).CityPopulation + "\n");
             }
         }
     }
@@ -1742,9 +1742,9 @@ public class MainProgram {
         for (int i = 0; i < reports.size(); i++) {
             if (reports.get(i) != null) {
                 System.out.println(
-                        reports.get(i).Language + "\n"
-                                + reports.get(i).LanguageSpeakers + "\n"
-                                + reports.get(i).LanguagePercentage + "\n");
+                        "Language : " + reports.get(i).Language + "\n"
+                                + "Amount of Speakers : " + reports.get(i).LanguageSpeakers + "\n"
+                                + "Percentage of Speakers : " + reports.get(i).LanguagePercentage + "\n");
             }
         }
     }
