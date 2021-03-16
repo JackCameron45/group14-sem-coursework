@@ -195,6 +195,24 @@ public class MainProgram {
         // Run query #22
         query22Display(citiesq22);
 
+        // Extract info for query #23
+        System.out.println("Query 23, Population living in cities and rural areas in each continent" + "\n");
+        ArrayList<CityAndCountry> citiesq23 = a.query23GetList();
+        // Run query #23
+        query23Display(citiesq23);
+
+        // Extract info for query #24
+        System.out.println("Query 24, Population living in cities and rural areas in each region" + "\n");
+        ArrayList<CityAndCountry> citiesq24 = a.query24GetList();
+        // Run query #24
+        query24Display(citiesq24);
+
+        // Extract info for query #25
+        System.out.println("Query 25, Population living in cities and rural areas in each country" + "\n");
+        ArrayList<CityAndCountry> citiesq25 = a.query25GetList();
+        // Run query #25
+        query25Display(citiesq25);
+
         // Extract info for query #26
         System.out.println("Query 26, population of the world" + "\n");
         ArrayList<Country> citiesq26 = a.query26GetList();
@@ -243,54 +261,8 @@ public class MainProgram {
         // Run query #33
         query33Display(citiesq33);
 
-        // Extract info for query #34
-        System.out.println("Query 34, Population living in cities and rural areas" + "\n");
-        ArrayList<CityAndCountry> citiesq34 = a.query34GetList();
-        // Run query #34
-        query34Display(citiesq34);
-
         // Disconnect from database
         a.disconnect();
-    }
-
-    //Method to get a city from the database
-    public City getCity(int CityID) {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT ID, Name "
-                            + "FROM city "
-                            + "WHERE ID = " + CityID;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return new employee if valid.
-            // Check one is returned
-            if (rset.next()) {
-                City city = new City();
-                city.ID = rset.getInt("ID");
-                city.Name = rset.getString("Name");
-                return city;
-            } else
-                return null;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get city details");
-            return null;
-        }
-    }
-
-    //Method to display a city from the database
-    public void displayCity(City city) {
-        if (city != null) {
-            System.out.println(
-                    city.ID + " "
-                            + city.Name + "\n"
-                            + city.CountryCode + "\n"
-                            + city.District + "\n"
-                            + city.Population + "\n");
-        }
     }
 
     /**
@@ -1269,6 +1241,174 @@ public class MainProgram {
     }
 
     /**
+     * Gets rural and cities report in a continent.
+     *
+     * @return A report of the rural and cities population in a continent, or null if there is an error.
+     */
+    public ArrayList<CityAndCountry> query23GetList() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT co.Continent, "
+                            + "SUM((SELECT sum(ci.Population) FROM city ci "
+                            + "WHERE ci.CountryCode = co.Code)) AS Cities_Population, "
+                            + "SUM(co.Population) "
+                            + "-SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) AS Rural_Population, "
+                            + "FORMAT(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "/(SUM(co.Population)) *100,2) AS Percentage_Living_in_Cities, "
+                            + "FORMAT(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "/(SUM(co.Population)))*100,2) AS Percentage_Living_in_Rural_Areas "
+                            + "FROM country co  GROUP BY co.Continent  ORDER BY co.Continent ASC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            while (rset.next()) {
+                CityAndCountry cityandcountry = new CityAndCountry();
+                cityandcountry.Continent = rset.getString("co.Continent");
+                cityandcountry.CityPopulation = rset.getLong("Cities_Population");
+                cityandcountry.CityPercentage = rset.getFloat("Percentage_Living_in_Cities");
+                cityandcountry.RuralPopulation = rset.getLong("Rural_Population");
+                cityandcountry.RuralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
+                reports.add(cityandcountry);
+            }
+            return reports;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query23
+    public static void query23Display(ArrayList<CityAndCountry> reports) {
+        for (int i = 0; i < reports.size(); i++) {
+            if (reports.get(i) != null) {
+                System.out.println(
+                        "Continent: " + reports.get(i).Continent + "\n"
+                                + "City Population: " + reports.get(i).CityPopulation + "\n"
+                                + "City Percentage: " + reports.get(i).CityPercentage + "\n"
+                                + "Rural Population: " + reports.get(i).RuralPopulation + "\n"
+                                + "Rural Percentage: " + reports.get(i).RuralPercentage + "\n");
+            }
+        }
+    }
+
+    /**
+     * Gets rural and cities report in a region.
+     *
+     * @return A report of the rural and cities population in a region, or null if there is an error.
+     */
+    public ArrayList<CityAndCountry> query24GetList() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT co.Region, "
+                            + "SUM((SELECT sum(ci.Population) FROM city ci "
+                            + "WHERE ci.CountryCode = co.Code)) AS Cities_Population, "
+                            + "SUM(co.Population) "
+                            + "-SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) AS Rural_Population, "
+                            + "FORMAT(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "/(SUM(co.Population)) *100,2) AS Percentage_Living_in_Cities, "
+                            + "FORMAT(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "/(SUM(co.Population)))*100,2) AS Percentage_Living_in_Rural_Areas "
+                            + "FROM country co  GROUP BY co.Region  ORDER BY co.Region ASC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            while (rset.next()) {
+                CityAndCountry cityandcountry = new CityAndCountry();
+                cityandcountry.Region = rset.getString("co.Region");
+                cityandcountry.CityPopulation = rset.getLong("Cities_Population");
+                cityandcountry.CityPercentage = rset.getFloat("Percentage_Living_in_Cities");
+                cityandcountry.RuralPopulation = rset.getLong("Rural_Population");
+                cityandcountry.RuralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
+                reports.add(cityandcountry);
+            }
+            return reports;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    /**
+     * Gets rural and cities report in a region.
+     *
+     * @return A report of the rural and cities population in a region, or null if there is an error.
+     */
+    public ArrayList<CityAndCountry> query25GetList() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT co.Name, "
+                            + "SUM((SELECT sum(ci.Population) FROM city ci "
+                            + "WHERE ci.CountryCode = co.Code)) AS Cities_Population, "
+                            + "SUM(co.Population) "
+                            + "-SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) AS Rural_Population, "
+                            + "FORMAT(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "/(SUM(co.Population)) *100,2) AS Percentage_Living_in_Cities, "
+                            + "FORMAT(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "/(SUM(co.Population)))*100,2) AS Percentage_Living_in_Rural_Areas "
+                            + "FROM country co  GROUP BY co.Name  ORDER BY co.Name ASC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract city information
+            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
+            while (rset.next()) {
+                CityAndCountry cityandcountry = new CityAndCountry();
+                cityandcountry.CountryName = rset.getString("co.Name");
+                cityandcountry.CityPopulation = rset.getLong("Cities_Population");
+                cityandcountry.CityPercentage = rset.getFloat("Percentage_Living_in_Cities");
+                cityandcountry.RuralPopulation = rset.getLong("Rural_Population");
+                cityandcountry.RuralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
+                reports.add(cityandcountry);
+            }
+            return reports;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    //Method to display Query25
+    public static void query25Display(ArrayList<CityAndCountry> reports) {
+        for (int i = 0; i < reports.size(); i++) {
+            if (reports.get(i) != null) {
+                System.out.println(
+                        "Country: " + reports.get(i).CountryName + "\n"
+                                + "City Population: " + reports.get(i).CityPopulation + "\n"
+                                + "City Percentage: " + reports.get(i).CityPercentage + "\n"
+                                + "Rural Population: " + reports.get(i).RuralPopulation + "\n"
+                                + "Rural Percentage: " + reports.get(i).RuralPercentage + "\n");
+            }
+        }
+    }
+
+    //Method to display Query24
+    public static void query24Display(ArrayList<CityAndCountry> reports) {
+        for (int i = 0; i < reports.size(); i++) {
+            if (reports.get(i) != null) {
+                System.out.println(
+                        "Region: " + reports.get(i).Region + "\n"
+                                + "City Population: " + reports.get(i).CityPopulation + "\n"
+                                + "City Percentage: " + reports.get(i).CityPercentage + "\n"
+                                + "Rural Population: " + reports.get(i).RuralPopulation + "\n"
+                                + "Rural Percentage: " + reports.get(i).RuralPercentage + "\n");
+            }
+        }
+    }
+
+    /**
      * Gets world population.
      *
      * @return A list of the world population, or null if there is an error.
@@ -1605,62 +1745,6 @@ public class MainProgram {
                         reports.get(i).Language + "\n"
                                 + reports.get(i).LanguageSpeakers + "\n"
                                 + reports.get(i).LanguagePercentage + "\n");
-            }
-        }
-    }
-
-    /**
-     * Gets language report.
-     *
-     * @return A report of the languages, or null if there is an error.
-     */
-    public ArrayList<CityAndCountry> query34GetList() {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT co.Continent, "
-                            + "SUM((SELECT sum(ci.Population) FROM city ci "
-                            + "WHERE ci.CountryCode = co.Code)) AS Cities_Population, "
-                            + "SUM(co.Population) "
-                            + "-SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) AS Rural_Population, "
-                            + "FORMAT(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
-                            + "/(SUM(co.Population)) *100,2) AS Percentage_Living_in_Cities, "
-                            + "FORMAT(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
-                            + "/(SUM(co.Population)))*100,2) AS Percentage_Living_in_Rural_Areas "
-                            + "FROM country co  GROUP BY co.Continent  ORDER BY co.Continent ASC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract city information
-            ArrayList<CityAndCountry> reports = new ArrayList<CityAndCountry>();
-            while (rset.next()) {
-                CityAndCountry cityandcountry = new CityAndCountry();
-                cityandcountry.Continent = rset.getString("co.Continent");
-                cityandcountry.CityPopulation = rset.getLong("Cities_Population");
-                cityandcountry.CityPercentage = rset.getFloat("Percentage_Living_in_Cities");
-                cityandcountry.RuralPopulation = rset.getLong("Rural_Population");
-                cityandcountry.RuralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
-                reports.add(cityandcountry);
-            }
-            return reports;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
-        }
-    }
-
-    //Method to display Query34
-    public static void query34Display(ArrayList<CityAndCountry> reports) {
-        for (int i = 0; i < reports.size(); i++) {
-            if (reports.get(i) != null) {
-                System.out.println(
-                        "Continent: " + reports.get(i).Continent + "\n"
-                                + "City Population: " + reports.get(i).CityPopulation + "\n"
-                                + "City Percentage: " + reports.get(i).CityPercentage + "\n"
-                                + "Rural Population: " + reports.get(i).RuralPopulation + "\n"
-                                + "Rural Percentage: " + reports.get(i).RuralPercentage + "\n");
             }
         }
     }

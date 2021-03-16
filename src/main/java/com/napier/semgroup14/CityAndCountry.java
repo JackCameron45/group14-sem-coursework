@@ -25,4 +25,6 @@ public class CityAndCountry {
 
     public String Continent;
 
+    public String Region;
+
 }
