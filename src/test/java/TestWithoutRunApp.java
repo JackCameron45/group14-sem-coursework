@@ -4,6 +4,7 @@ import com.napier.semgroup14.Country;
 import com.napier.semgroup14.MainProgram;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Disabled
 public class TestWithoutRunApp {
 
     static  MainProgram mp;
@@ -26,13 +28,14 @@ public class TestWithoutRunApp {
         mp.disconnect();
     }
 
+    @Disabled
     @Test
     public void query6GetListTest(){
         ArrayList<Country> countries = mp.query6GetList();
         System.out.println("Test proba " + countries.size());
         assertEquals(5, countries.size());
     }
-
+    @Disabled
     @Test
     public void query7GetListTest(){
         ArrayList<City> cities = mp.query7GetList();
@@ -40,7 +43,7 @@ public class TestWithoutRunApp {
         assertEquals(4079, cities.size());
         assertEquals("Seoul", cities.get(1).Name, "Pierwszy element na liście ma się zgadzać");
     }
-
+    @Disabled
     @Test
     public void query33GetListTest() {
         ArrayList<CityAndCountry> cityAndCountries = mp.query33GetList();
@@ -54,10 +57,4 @@ public class TestWithoutRunApp {
         return new  BigDecimal(arg).setScale(2, RoundingMode.HALF_UP);
     }
 
-    @Test
-    public void query6GetList(){
-//        System.out.println("Test proba");
-//        ArrayList<Country> countries = new ArrayList<Country>();
-//        assertEquals(5, countries.size());
-    }
 }
