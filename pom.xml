@@ -21,13 +21,6 @@
             <version>5.1.0</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
@@ -66,9 +59,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.junit.platform</groupId>
