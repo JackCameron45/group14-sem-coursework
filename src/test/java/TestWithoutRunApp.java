@@ -20,6 +20,7 @@ public class TestWithoutRunApp {
 
     static MainProgram mp;
 
+    @Disabled
     @BeforeAll
     static public void initDatabase() throws ClassNotFoundException, SQLException {
 //        mp = new MainProgram();
@@ -31,11 +32,13 @@ public class TestWithoutRunApp {
         mp.setConnectForTest(conn);
     }
 
+    @Disabled
     @AfterAll
     public static void deInit() {
         mp.disconnect();
     }
 
+    @Disabled
     @Test
     public void query6GetListTest() {
         ArrayList<Country> countries = mp.query6GetList();
@@ -44,6 +47,7 @@ public class TestWithoutRunApp {
     }
 
     //  @Disabled
+    @Disabled
     @Test
     public void query7GetListTest() {
         ArrayList<City> cities = mp.query7GetList();
