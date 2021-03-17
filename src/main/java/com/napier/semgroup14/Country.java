@@ -31,7 +31,8 @@ public class Country {
 
     public String HeadOfState;
 
-    public String Capital;
+    public int Capital;
 
     public String Code2;
+
 }
