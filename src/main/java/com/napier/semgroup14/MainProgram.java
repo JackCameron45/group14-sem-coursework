@@ -29,8 +29,7 @@ public class MainProgram {
                 // Wait a bit for db to start
                 Thread.sleep(5000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/world?useSSL=false", "root", "pass");
-//                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
