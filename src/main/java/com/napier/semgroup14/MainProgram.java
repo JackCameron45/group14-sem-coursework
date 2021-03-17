@@ -4,8 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 // Class to connect to the MSQL world database
-public class MainProgram
-{
+public class MainProgram {
     /**
      * Connection to MySQL world database.
      */
@@ -14,47 +13,31 @@ public class MainProgram
     /**
      * Connect to the MySQL world database.
      */
-    public void setConnectForTest( Connection connection ) {
-        con = connection;
-    }
-
-    public void connect()
-    {
-        try
-        {
+    public void connect() {
+        try {
             // Load Database driver
             Class.forName("com.mysql.jdbc.Driver");
-     //      Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
         }
 
         int retries = 10;
-        for (int i = 0; i < retries; ++i)
-        {
+        for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
-            try
-            {
+            try {
+                // Wait a bit for db to start
+                Thread.sleep(5000);
                 // Connect to database
-                System.out.println("Connecting to db:3306/world");
-  //              con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
                 con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/world?useSSL=false", "root", "pass");
+//                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
                 break;
-            }
-            catch (SQLException sqle)
-            {
+            } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
-                try {
-                    // Wait a bit for db to start
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    System.out.println("Thread interrupted? Should not happen.");
-                }
+            } catch (InterruptedException ie) {
+                System.out.println("Thread interrupted? Should not happen.");
             }
         }
     }
@@ -62,17 +45,12 @@ public class MainProgram
     /**
      * Disconnect from the MySQL world database.
      */
-    public void disconnect()
-    {
-        if (con != null)
-        {
-            try
-            {
+    public void disconnect() {
+        if (con != null) {
+            try {
                 // Close connection
                 con.close();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 System.out.println("Error closing connection to database");
             }
         }
@@ -1593,7 +1571,7 @@ public class MainProgram
             // Create string for SQL statement
             String strSelect =
                     "SELECT countrylanguage.Language, SUM(country.Population) AS Population, "
-                            + "ROUND((SUM(country.Population)/(SELECT SUM(country.Population) AS World_Population "
+                            + "FORMAT((SUM(country.Population)/(SELECT SUM(country.Population) AS World_Population "
                             + "FROM  country))*100,2)  AS Percentage_of_The_World_Population "
                             + "FROM country, countrylanguage "
                             + "WHERE  country.Code = countrylanguage.CountryCode "
@@ -1609,7 +1587,6 @@ public class MainProgram
                 CityAndCountry cityandcountry = new CityAndCountry();
                 cityandcountry.Language = rset.getString("countrylanguage.Language");
                 cityandcountry.LanguageSpeakers = rset.getInt("Population");
-                cityandcountry.LanguagePercentage = rset.getFloat("Percentage_of_The_World_Population");
                 cityandcountry.LanguagePercentage = rset.getFloat("Percentage_of_The_World_Population");
                 reports.add(cityandcountry);
             }
@@ -1649,9 +1626,9 @@ public class MainProgram
                             + "WHERE ci.CountryCode = co.Code)) AS Cities_Population, "
                             + "SUM(co.Population) "
                             + "-SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) AS Rural_Population, "
-                            + "ROUND(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "FORMAT(SUM((SELECT sum(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
                             + "/(SUM(co.Population)) *100,2) AS Percentage_Living_in_Cities, "
-                            + "ROUND(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
+                            + "FORMAT(100-(SUM((SELECT SUM(ci.Population) FROM city ci  WHERE ci.CountryCode = co.Code)) "
                             + "/(SUM(co.Population)))*100,2) AS Percentage_Living_in_Rural_Areas "
                             + "FROM country co  GROUP BY co.Continent  ORDER BY co.Continent ASC";
             // Execute SQL statement
@@ -1688,4 +1665,5 @@ public class MainProgram
             }
         }
     }
+
 }
