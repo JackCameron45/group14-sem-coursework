@@ -163,37 +163,37 @@ public class MainProgram {
         System.out.println("Query 17, population of capital cities" + "\n");
         ArrayList<City> citiesq17 = a.query17GetList();
         // Run query #17
-        query17Display(citiesq17);
+        CapitalCityReportDisplay(citiesq17);
 
         // Extract info for query #18
         System.out.println("Query 18, population of capital cities in Europe" + "\n");
         ArrayList<City> citiesq18 = a.query18GetList();
         // Run query #18
-        query18Display(citiesq18);
+        CapitalCityReportDisplay(citiesq18);
 
         // Extract info for query #19
         System.out.println("Query 19, population of capital cities in Polynesia" + "\n");
         ArrayList<City> citiesq19 = a.query19GetList();
         // Run query #19
-        query19Display(citiesq19);
+        CapitalCityReportDisplay(citiesq19);
 
         // Extract info for query #20
         System.out.println("Query 20, top N populated capital cities in the world" + "\n");
         ArrayList<City> citiesq20 = a.query20GetList();
         // Run query #20
-        query20Display(citiesq20);
+        CapitalCityReportDisplay(citiesq20);
 
         // Extract info for query #21
         System.out.println("Query 21, top N populated capital cities in Europe" + "\n");
         ArrayList<City> citiesq21 = a.query21GetList();
         // Run query #21
-        query21Display(citiesq21);
+        CapitalCityReportDisplay(citiesq21);
 
         // Extract info for query #22
         System.out.println("Query 22, top N populated capital cities in Polynesia" + "\n");
         ArrayList<City> citiesq22 = a.query22GetList();
         // Run query #22
-        query22Display(citiesq22);
+        CapitalCityReportDisplay(citiesq22);
 
         // Extract info for query #23
         System.out.println("Query 23, Population living in cities and rural areas in each continent" + "\n");
@@ -852,7 +852,7 @@ public class MainProgram {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.Population "
+                    "SELECT city.name, city.CountryCode, city.Population "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.Capital FROM country ) "
                             + "ORDER BY city.Population DESC";
@@ -863,6 +863,7 @@ public class MainProgram {
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
+                city.CountryCode = rset.getString("city.CountryCode");
                 city.Population = rset.getInt("city.Population");
                 cities.add(city);
             }
@@ -871,17 +872,6 @@ public class MainProgram {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
-        }
-    }
-
-    //Method to display Query17
-    public static void query17Display(ArrayList<City> cities) {
-        for (City city : cities) {
-            if (city != null) {
-                System.out.println(
-                        city.Name + "\n"
-                                + city.Population + "\n");
-            }
         }
     }
 
@@ -896,7 +886,7 @@ public class MainProgram {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.Population "
+                    "SELECT city.name, city.CountryCode, city.Population "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.capital FROM country WHERE country.Continent = 'Europe' ) "
                             + "ORDER BY city.Population DESC";
@@ -907,6 +897,7 @@ public class MainProgram {
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
+                city.CountryCode = rset.getString("city.CountryCode");
                 city.Population = rset.getInt("city.Population");
                 cities.add(city);
             }
@@ -915,17 +906,6 @@ public class MainProgram {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
-        }
-    }
-
-    //Method to display Query18
-    public static void query18Display(ArrayList<City> cities) {
-        for (City city : cities) {
-            if (city != null) {
-                System.out.println(
-                        city.Name + "\n"
-                                + city.Population + "\n");
-            }
         }
     }
 
@@ -940,7 +920,7 @@ public class MainProgram {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.Population "
+                    "SELECT city.name, city.CountryCode, city.Population "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.capital FROM country WHERE country.Region = 'Polynesia' ) "
                             + "ORDER BY city.Population DESC";
@@ -951,6 +931,7 @@ public class MainProgram {
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
+                city.CountryCode = rset.getString("city.CountryCode");
                 city.Population = rset.getInt("city.Population");
                 cities.add(city);
             }
@@ -959,17 +940,6 @@ public class MainProgram {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
-        }
-    }
-
-    //Method to display Query19
-    public static void query19Display(ArrayList<City> cities) {
-        for (City city : cities) {
-            if (city != null) {
-                System.out.println(
-                        city.Name + "\n"
-                                + city.Population + "\n");
-            }
         }
     }
 
@@ -984,7 +954,7 @@ public class MainProgram {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.Population "
+                    "SELECT city.name, city.CountryCode, city.Population "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.Capital FROM country ) "
                             + "ORDER BY city.Population DESC "
@@ -996,6 +966,7 @@ public class MainProgram {
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
+                city.CountryCode = rset.getString("city.CountryCode");
                 city.Population = rset.getInt("city.Population");
                 cities.add(city);
             }
@@ -1004,17 +975,6 @@ public class MainProgram {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
-        }
-    }
-
-    //Method to display Query20
-    public static void query20Display(ArrayList<City> cities) {
-        for (City city : cities) {
-            if (city != null) {
-                System.out.println(
-                        city.Name + "\n"
-                                + city.Population + "\n");
-            }
         }
     }
 
@@ -1029,7 +989,7 @@ public class MainProgram {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.Population "
+                    "SELECT city.name, city.CountryCode, city.Population "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.Capital FROM country WHERE country.Continent = 'Europe' ) "
                             + "ORDER BY city.Population DESC "
@@ -1041,6 +1001,7 @@ public class MainProgram {
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
+                city.CountryCode = rset.getString("city.CountryCode");
                 city.Population = rset.getInt("city.Population");
                 cities.add(city);
             }
@@ -1049,17 +1010,6 @@ public class MainProgram {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
-        }
-    }
-
-    //Method to display Query21
-    public static void query21Display(ArrayList<City> cities) {
-        for (City city : cities) {
-            if (city != null) {
-                System.out.println(
-                        city.Name + "\n"
-                                + city.Population + "\n");
-            }
         }
     }
 
@@ -1074,7 +1024,7 @@ public class MainProgram {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.Population "
+                    "SELECT city.name, city.CountryCode, city.Population "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.Capital FROM country WHERE country.Region = 'Polynesia' ) "
                             + "ORDER BY city.Population DESC "
@@ -1086,6 +1036,7 @@ public class MainProgram {
             while (rset.next()) {
                 City city = new City();
                 city.Name = rset.getString("city.Name");
+                city.CountryCode = rset.getString("city.CountryCode");
                 city.Population = rset.getInt("city.Population");
                 cities.add(city);
             }
@@ -1094,17 +1045,6 @@ public class MainProgram {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details");
             return null;
-        }
-    }
-
-    //Method to display Query22
-    public static void query22Display(ArrayList<City> cities) {
-        for (City city : cities) {
-            if (city != null) {
-                System.out.println(
-                        city.Name + "\n"
-                                + city.Population + "\n");
-            }
         }
     }
 
@@ -1640,6 +1580,18 @@ public class MainProgram {
                         "City Name: " + city.Name + "\n"
                                 + "Country Name: " + city.CountryCode + "\n"
                                 + "District: " + city.District + "\n"
+                                + "Population: " + city.Population + "\n");
+            }
+        }
+    }
+
+    //Method to a capital city report
+    public static void CapitalCityReportDisplay(ArrayList<City> cities) {
+        for (City city : cities) {
+            if (city != null) {
+                System.out.println(
+                        "City Name: " + city.Name + "\n"
+                                + "Country Name: " + city.CountryCode + "\n"
                                 + "Population: " + city.Population + "\n");
             }
         }
