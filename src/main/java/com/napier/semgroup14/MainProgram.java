@@ -1559,15 +1559,13 @@ public class MainProgram {
 
     //Method to display a country report
     public static void CountryReportDisplay(ArrayList<Country> countries) {
-        // Check employees is not null
+        // Check countries is not null
         if (countries == null)
         {
             System.out.println("No countries");
             return;
         }
         for (Country country : countries) {
-            if (country == null)
-                continue;
             if (country != null) {
                 System.out.println(
                         "Country Code: " + country.Code + "\n"
@@ -1582,6 +1580,12 @@ public class MainProgram {
 
     //Method to display a city report
     public static void CityReportDisplay(ArrayList<City> cities) {
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
         for (City city : cities) {
             if (city != null) {
                 System.out.println(
@@ -1595,6 +1599,12 @@ public class MainProgram {
 
     //Method to a capital city report
     public static void CapitalCityReportDisplay(ArrayList<City> cities) {
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No capital cities");
+            return;
+        }
         for (City city : cities) {
             if (city != null) {
                 System.out.println(
