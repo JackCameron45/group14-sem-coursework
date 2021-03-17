@@ -1559,7 +1559,15 @@ public class MainProgram {
 
     //Method to display a country report
     public static void CountryReportDisplay(ArrayList<Country> countries) {
+        // Check employees is not null
+        if (countries == null)
+        {
+            System.out.println("No countries");
+            return;
+        }
         for (Country country : countries) {
+            if (country == null)
+                continue;
             if (country != null) {
                 System.out.println(
                         "Country Code: " + country.Code + "\n"
