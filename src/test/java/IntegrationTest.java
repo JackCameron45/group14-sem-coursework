@@ -72,7 +72,7 @@ public class IntegrationTest {
     @Test
     public void query4GetListTest() {
         ArrayList<Country> countries = mainprogram.query4GetList();
-        assertEquals("Haiti", countries.get(2).Name);
+        assertEquals("India", countries.get(1).Name);
         assertEquals(24, countries.size());
         assertTrue(countries.size() > 0);
     }
