@@ -71,8 +71,13 @@ public class MainProgram {
         MainProgram a = new MainProgram();
 
         // Connect to database
-        a.connect("db:33060");
-
+        if (args.length <1) {
+            a.connect("db:33060");
+        }
+        else
+        {
+            a.connect(args[0]);
+        }
         // Extract info for query #1
         System.out.println("Query 1, population of countries in world" + "\n");
         ArrayList<Country> citiesq1 = a.query1GetList();

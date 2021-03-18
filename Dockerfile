@@ -6,4 +6,4 @@
 FROM openjdk:latest
 COPY ./target/SEMGroup14-1.0-SNAPSHOT-jar-with-dependencies.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "SEMGroup14-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "-jar", "SEMGroup14-1.0-SNAPSHOT-jar-with-dependencies.jar", "db:3306"]
