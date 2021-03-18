@@ -27,23 +27,23 @@ public class IntegrationTest {
         mainprogram.connect("localhost:33060");
     }
 
-    @Test
-    public void CountryReportDisplayTest() {
-        ArrayList<Country> countries = new ArrayList<>();
-        mainprogram.CountryReportDisplay(countries);
-    }
-
-    @Test
-    public void CityReportDisplayTest() {
-        ArrayList<City> cities = new ArrayList<>();
-        mainprogram.CityReportDisplay(cities);
-    }
-
-    @Test
-    public void CapitalCityReportDisplayTest() {
-        ArrayList<City> capitals = new ArrayList<>();
-        mainprogram.CapitalCityReportDisplay(capitals);
-    }
+    //   @Test
+    //   public void CountryReportDisplayTest() {
+    //       ArrayList<Country> countries = new ArrayList<>();
+    //       mainprogram.CountryReportDisplay(countries);
+    //   }
+//
+    //   @Test
+    //   public void CityReportDisplayTest() {
+    //       ArrayList<City> cities = new ArrayList<>();
+    //       mainprogram.CityReportDisplay(cities);
+    //   }
+//
+    //   @Test
+    //   public void CapitalCityReportDisplayTest() {
+    //       ArrayList<City> capitals = new ArrayList<>();
+    //       mainprogram.CapitalCityReportDisplay(capitals);
+    //   }
 
     @Test
     public void query1GetListTest() {
@@ -94,7 +94,6 @@ public class IntegrationTest {
         assertTrue(countries.size() > 0);
     }
 
-
     @Test
     public void query7GetListTest() {
         ArrayList<City> cities = mainprogram.query7GetList();
@@ -102,7 +101,6 @@ public class IntegrationTest {
         assertEquals("Seoul", cities.get(1).Name);
         assertTrue(cities.size() > 0);
     }
-
 
     //  @Test
     //  public void query33GetListTest() {
