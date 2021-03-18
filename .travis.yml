@@ -26,7 +26,7 @@ jobs:
     - stage: integration tests
       jdk: oraclejdk11
       script: echo "Integration Tests"
-      # script: mvn test -Dtest=com.napier.sem.AppIntegrationTest
+      # script: mvn test -Dtest=com.napier.sem.IntegrationTest
     - stage: deploy
       install: skip
       jdk: oraclejdk11
@@ -39,3 +39,11 @@ stages:
   - integration tests
   - name: deploy
     if: branch = master
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+    #https://app.codecov.io/gh/MichalBoduch/group14-sem-coursework
+    #Use this token when uploading reports to this repository.
+    #You can set it in your CI environment variables.
+    #CODECOV_TOKEN='b65aadd4-65c1-4143-bcfc-618db2241380'
