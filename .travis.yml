@@ -40,11 +40,13 @@ stages:
   - name: deploy
     if: branch = master
 
+env:
+  - CODECOV_TOKEN='b65aadd4-65c1-4143-bcfc-618db2241380'
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
-env:
-  - CODECOV_TOKEN='b65aadd4-65c1-4143-bcfc-618db2241380'
+
     #https://app.codecov.io/gh/MichalBoduch/group14-sem-coursework
     #Use this token when uploading reports to this repository.
     #You can set it in your CI environment variables.
