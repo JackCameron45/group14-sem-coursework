@@ -57,14 +57,13 @@ public class IntegrationTest {
         assertEquals("Seoul", cities.get(1).Name);
     }
 
-    @Test
-    public void query33GetListTest() {
-        ArrayList<CityAndCountry> cityAndCountries = mainprogram.query33GetList();
-        assertEquals("32.38", roundBg(cityAndCountries.get(0).LanguagePercentage));
+ //  @Test
+ //  public void query33GetListTest() {
+ //      ArrayList<CityAndCountry> cityAndCountries = mainprogram.query33GetList();
+ //      assertEquals("32.38", roundBg(cityAndCountries.get(0).LanguagePercentage));
+ //  }
+
+ //  public static BigDecimal roundBg(float arg) {
+    //    return new BigDecimal(arg).setScale(2, RoundingMode.HALF_UP);
     }
 
-    public static BigDecimal roundBg(float arg) {
-        return new BigDecimal(arg).setScale(2, RoundingMode.HALF_UP);
-    }
-
-}
