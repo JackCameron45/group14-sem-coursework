@@ -71,7 +71,7 @@ public class MainProgram {
         MainProgram a = new MainProgram();
 
         // Connect to database
-        a.connect("db:3306");
+        a.connect("db:33060");
 
         // Extract info for query #1
         System.out.println("Query 1, population of countries in world" + "\n");
