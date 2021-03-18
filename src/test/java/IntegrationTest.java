@@ -69,21 +69,21 @@ public class IntegrationTest {
         //   assertTrue(countries.size() > 0);
     }
 
-    //  @Test
-    //  public void query4GetListTest() {
-    //      ArrayList<Country> countries = mainprogram.query4GetList();
-    //      assertEquals("India", countries.get(1).Name);
-    //      assertEquals(24, countries.size());
-    //   //   assertTrue(countries.size() > 0);
-    //  }
+    @Test
+    public void query4GetListTest() {
+        ArrayList<Country> countries = mainprogram.query4GetList();
+        assertEquals("India", countries.get(1).Name);
+        assertEquals(24, countries.size());
+        //   assertTrue(countries.size() > 0);
+    }
 
-    //  @Test
-    //  public void query5GetListTest() {
-    //      ArrayList<Country> countries = mainprogram.query5GetList();
-    //      assertEquals("Germany", countries.get(1).Name);
-    //      assertEquals(5, countries.size());
-    //      assertTrue(countries.size() > 0);
-    //  }
+    @Test
+    public void query5GetListTest() {
+        ArrayList<Country> countries = mainprogram.query5GetList();
+        assertEquals("Germany", countries.get(1).Name);
+        assertEquals(5, countries.size());
+        //      assertTrue(countries.size() > 0);
+    }
 
 
     @Test
