@@ -25,8 +25,9 @@ jobs:
       script: mvn test -Dtest=UnitTest
     - stage: integration tests
       jdk: oraclejdk11
-      script: echo "Integration Tests"
-      # script: mvn test -Dtest=com.napier.sem.IntegrationTest
+      script: mvn test -Dtest=IntegrationTest
+      #script: echo "Integration Tests"
+      #script: mvn test -Dtest=com.napier.sem.IntegrationTest
     - stage: deploy
       install: skip
       jdk: oraclejdk11
