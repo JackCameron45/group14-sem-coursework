@@ -28,8 +28,8 @@ public class IntegrationTest {
     @Test
     public void query1GetListTest() {
         ArrayList<Country> countries = mainprogram.query1GetList();
-        assertEquals(239, countries.size() );
-        assertEquals("China", countries.get(0).Name );
+        assertEquals(239, countries.size());
+        assertEquals("China", countries.get(0).Name);
         // assertTrue(countries.size() > 0);
 
     }
@@ -37,8 +37,8 @@ public class IntegrationTest {
     @Test
     public void query2GetListTest() {
         ArrayList<Country> countries = mainprogram.query1GetList();
-        assertEquals("China", countries.get(0).Name );
-        assertEquals(239, countries.size() );
+        assertEquals("China", countries.get(0).Name);
+        //  assertEquals(239, countries.size() );
         // assertTrue(countries.size() > 0);
     }
 
@@ -54,7 +54,7 @@ public class IntegrationTest {
     public void query7GetListTest() {
         ArrayList<City> cities = mainprogram.query7GetList();
         assertEquals(4079, cities.size());
-        assertEquals("Seoul", cities.get(1).Name, "1st element of the list should match");
+        assertEquals("Seoul", cities.get(1).Name);
     }
 
     @Test
