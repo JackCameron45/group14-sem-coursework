@@ -72,7 +72,7 @@ public class MainProgram {
 
         // Connect to database
         if (args.length <1) {
-            a.connect("db:33060");
+            a.connect("localhost:3306");
         }
         else
         {
