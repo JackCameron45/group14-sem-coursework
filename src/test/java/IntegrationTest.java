@@ -25,7 +25,7 @@ public class IntegrationTest {
     @BeforeAll
     static void init() {
         mainprogram = new MainProgram();
-        mainprogram.connect("localhost:33060", "example");
+        mainprogram.connect("localhost:33060", "pass");
     }
 
     //Query1 test
