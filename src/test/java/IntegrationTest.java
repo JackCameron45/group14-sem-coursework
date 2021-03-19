@@ -96,7 +96,7 @@ public class IntegrationTest {
     public void query8GetListTest() {
         ArrayList<City> cities = mainprogram.query8GetList();
         assertEquals(841, cities.size());
-        assertEquals("Moscow", cities.get(1).Name);
+        assertEquals("Moscow", cities.get(0).Name);
         //   assertTrue(cities.size() > 0);
     }
 
@@ -249,7 +249,7 @@ public class IntegrationTest {
     public void query25GetListTest() {
         ArrayList<CityAndCountry> reports = mainprogram.query25GetList();
         assertEquals(239, reports.size());
-        assertEquals("Albania", reports.get(1).Region);
+        assertEquals("Albania", reports.get(1).CountryName);
         //   assertTrue(cities.size() > 0);
     }
 
