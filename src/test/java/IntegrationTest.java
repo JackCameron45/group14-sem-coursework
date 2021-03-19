@@ -21,30 +21,14 @@ public class IntegrationTest {
     //Creating MainProgram instance
     static MainProgram mainprogram;
 
+    //Connecting to database
     @BeforeAll
     static void init() {
         mainprogram = new MainProgram();
         mainprogram.connect("localhost:33060");
     }
 
-    //   @Test
-    //   public void CountryReportDisplayTest() {
-    //       ArrayList<Country> countries = new ArrayList<>();
-    //       mainprogram.CountryReportDisplay(countries);
-    //   }
-//
-    //   @Test
-    //   public void CityReportDisplayTest() {
-    //       ArrayList<City> cities = new ArrayList<>();
-    //       mainprogram.CityReportDisplay(cities);
-    //   }
-//
-    //   @Test
-    //   public void CapitalCityReportDisplayTest() {
-    //       ArrayList<City> capitals = new ArrayList<>();
-    //       mainprogram.CapitalCityReportDisplay(capitals);
-    //   }
-
+    //Query1 test
     @Test
     public void query1GetListTest() {
         ArrayList<Country> countries = mainprogram.query1GetList();
@@ -53,6 +37,7 @@ public class IntegrationTest {
         //   assertTrue(countries.size() > 0);
     }
 
+    //Query2 test
     @Test
     public void query2GetListTest() {
         ArrayList<Country> countries = mainprogram.query2GetList();
@@ -61,6 +46,7 @@ public class IntegrationTest {
         //   assertTrue(countries.size() > 0);
     }
 
+    //Query3 test
     @Test
     public void query3GetListTest() {
         ArrayList<Country> countries = mainprogram.query3GetList();
@@ -69,6 +55,7 @@ public class IntegrationTest {
         //   assertTrue(countries.size() > 0);
     }
 
+    //Query4 test
     //  @Test
     //  public void query4GetListTest() {
     //      ArrayList<Country> countries = mainprogram.query4GetList();
@@ -77,6 +64,7 @@ public class IntegrationTest {
     //   assertTrue(countries.size() > 0);
     //   }
 
+    //Query5 test
     //  @Test
     //  public void query5GetListTest() {
     //      ArrayList<Country> countries = mainprogram.query5GetList();
@@ -85,7 +73,7 @@ public class IntegrationTest {
     //      assertTrue(countries.size() > 0);
     // }
 
-
+    //Query6 test
     @Test
     public void query6GetListTest() {
         ArrayList<Country> countries = mainprogram.query6GetList();
@@ -94,6 +82,7 @@ public class IntegrationTest {
         //  assertTrue(countries.size() > 0);
     }
 
+    //Query7 test
     @Test
     public void query7GetListTest() {
         ArrayList<City> cities = mainprogram.query7GetList();
@@ -102,6 +91,7 @@ public class IntegrationTest {
         //   assertTrue(cities.size() > 0);
     }
 
+    //Query33 test
     //  @Test
     //  public void query33GetListTest() {
     //      ArrayList<CityAndCountry> cityAndCountries = mainprogram.query33GetList();

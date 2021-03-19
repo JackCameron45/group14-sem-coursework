@@ -78,6 +78,7 @@ public class MainProgram {
         {
             a.connect(args[0]);
         }
+
         // Extract info for query #1
         System.out.println("Query 1, population of countries in world" + "\n");
         ArrayList<Country> citiesq1 = a.query1GetList();
