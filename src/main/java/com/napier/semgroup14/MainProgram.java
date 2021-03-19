@@ -13,40 +13,32 @@ public class MainProgram {
     /**
      * Connect to the MySQL world database.
      */
-    public void connect(String location)
-    {
-        try
-        {
+    public void connect(String location, String password) {
+        try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
         }
 
         int retries = 10;
-        for (int i = 0; i < retries; ++i)
-        {
+        for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
-            try
-            {
-                // Wait a bit for db to start
-                Thread.sleep(5000);
+            try {
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "pass");
+                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", password);
                 System.out.println("Successfully connected");
                 break;
-            }
-            catch (SQLException sqle)
-            {
+            } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
-            }
-            catch (InterruptedException ie)
-            {
-                System.out.println("Thread interrupted? Should not happen.");
+                // Wait a bit for db to start
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    System.out.println("Thread interrupted? Should not happen.");
+                }
             }
         }
     }
@@ -71,12 +63,10 @@ public class MainProgram {
         MainProgram a = new MainProgram();
 
         // Connect to database
-        if (args.length <1) {
-            a.connect("localhost:3306");
-        }
-        else
-        {
-            a.connect(args[0]);
+        if (args.length < 1) {
+            a.connect("localhost:3306", "pass");
+        } else {
+            a.connect(args[0],"pass");
         }
 
         // Extract info for query #1
@@ -1576,8 +1566,7 @@ public class MainProgram {
     //Method to display a country report
     public static void CountryReportDisplay(ArrayList<Country> countries) {
         // Check countries is not null
-        if (countries == null)
-        {
+        if (countries == null) {
             System.out.println("No countries");
             return;
         }
@@ -1597,8 +1586,7 @@ public class MainProgram {
     //Method to display a city report
     public static void CityReportDisplay(ArrayList<City> cities) {
         // Check cities is not null
-        if (cities == null)
-        {
+        if (cities == null) {
             System.out.println("No cities");
             return;
         }
@@ -1616,8 +1604,7 @@ public class MainProgram {
     //Method to a capital city report
     public static void CapitalCityReportDisplay(ArrayList<City> cities) {
         // Check cities is not null
-        if (cities == null)
-        {
+        if (cities == null) {
             System.out.println("No capital cities");
             return;
         }
