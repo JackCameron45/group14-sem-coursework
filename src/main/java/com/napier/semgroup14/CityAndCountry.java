@@ -1,7 +1,7 @@
 package com.napier.semgroup14;
 
 /**
- * Represents a city
+ * Represents a city and a country
  */
 public class CityAndCountry {
 
