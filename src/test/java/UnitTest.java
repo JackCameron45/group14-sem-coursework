@@ -18,7 +18,7 @@ public class UnitTest {
     static void init()
     {
         mainprogram = new MainProgram();
-        mainprogram.connect("localhost:33060", "pass");
+        mainprogram.connect("localhost:3306", "pass");
     }
 
     //Test when countries is null
