@@ -3,7 +3,10 @@ package com.napier.semgroup14;
 import java.sql.*;
 import java.util.ArrayList;
 
-// Class to connect to the MySQL world database
+
+/**
+ * Class to connect to the MySQL world database
+ */
 public class MainProgram {
     /**
      * Connection to MySQL world database.
@@ -291,12 +294,12 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Code = rset.getString("country.code");
-                country.Name = rset.getString("country.Name");
-                country.Continent = rset.getString("country.Continent");
-                country.Region = rset.getString("country.Region");
-                country.Population = rset.getLong("country.Population");
-                country.Capital = rset.getInt("country.Capital");
+                country.code = rset.getString("country.code");
+                country.name = rset.getString("country.Name");
+                country.continent = rset.getString("country.Continent");
+                country.region = rset.getString("country.Region");
+                country.population = rset.getLong("country.Population");
+                country.capital = rset.getInt("country.Capital");
                 countries.add(country);
             }
             return countries;
@@ -328,12 +331,12 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Code = rset.getString("country.code");
-                country.Name = rset.getString("country.Name");
-                country.Continent = rset.getString("country.Continent");
-                country.Region = rset.getString("country.Region");
-                country.Population = rset.getLong("country.Population");
-                country.Capital = rset.getInt("country.Capital");
+                country.code = rset.getString("country.code");
+                country.name = rset.getString("country.Name");
+                country.continent = rset.getString("country.Continent");
+                country.region = rset.getString("country.Region");
+                country.population = rset.getLong("country.Population");
+                country.capital = rset.getInt("country.Capital");
                 countries.add(country);
             }
             return countries;
@@ -365,12 +368,12 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Code = rset.getString("country.code");
-                country.Name = rset.getString("country.Name");
-                country.Continent = rset.getString("country.Continent");
-                country.Region = rset.getString("country.Region");
-                country.Population = rset.getLong("country.Population");
-                country.Capital = rset.getInt("country.Capital");
+                country.code = rset.getString("country.code");
+                country.name = rset.getString("country.Name");
+                country.continent = rset.getString("country.Continent");
+                country.region = rset.getString("country.Region");
+                country.population = rset.getLong("country.Population");
+                country.capital = rset.getInt("country.Capital");
                 countries.add(country);
             }
             return countries;
@@ -402,12 +405,12 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Code = rset.getString("country.code");
-                country.Name = rset.getString("country.Name");
-                country.Continent = rset.getString("country.Continent");
-                country.Region = rset.getString("country.Region");
-                country.Population = rset.getLong("country.Population");
-                country.Capital = rset.getInt("country.Capital");
+                country.code = rset.getString("country.code");
+                country.name = rset.getString("country.Name");
+                country.continent = rset.getString("country.Continent");
+                country.region = rset.getString("country.Region");
+                country.population = rset.getLong("country.Population");
+                country.capital = rset.getInt("country.Capital");
                 countries.add(country);
             }
             return countries;
@@ -440,12 +443,12 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Code = rset.getString("country.code");
-                country.Name = rset.getString("country.Name");
-                country.Continent = rset.getString("country.Continent");
-                country.Region = rset.getString("country.Region");
-                country.Population = rset.getLong("country.Population");
-                country.Capital = rset.getInt("country.Capital");
+                country.code = rset.getString("country.code");
+                country.name = rset.getString("country.Name");
+                country.continent = rset.getString("country.Continent");
+                country.region = rset.getString("country.Region");
+                country.population = rset.getLong("country.Population");
+                country.capital = rset.getInt("country.Capital");
                 countries.add(country);
             }
             return countries;
@@ -478,12 +481,12 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Code = rset.getString("country.code");
-                country.Name = rset.getString("country.Name");
-                country.Continent = rset.getString("country.Continent");
-                country.Region = rset.getString("country.Region");
-                country.Population = rset.getLong("country.Population");
-                country.Capital = rset.getInt("country.Capital");
+                country.code = rset.getString("country.code");
+                country.name = rset.getString("country.Name");
+                country.continent = rset.getString("country.Continent");
+                country.region = rset.getString("country.Region");
+                country.population = rset.getLong("country.Population");
+                country.capital = rset.getInt("country.Capital");
                 countries.add(country);
             }
             return countries;
@@ -514,10 +517,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -549,10 +552,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -584,10 +587,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -619,10 +622,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -654,10 +657,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -689,10 +692,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -725,10 +728,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -761,10 +764,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -797,10 +800,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -833,10 +836,10 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.District = rset.getString("city.District");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.District");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -868,9 +871,9 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -902,9 +905,9 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -936,9 +939,9 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -971,9 +974,9 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -1006,9 +1009,9 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -1041,9 +1044,9 @@ public class MainProgram {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.Name = rset.getString("city.Name");
-                city.CountryCode = rset.getString("city.CountryCode");
-                city.Population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.countryCode = rset.getString("city.CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -1081,11 +1084,11 @@ public class MainProgram {
             ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
-                cityandcountry.Continent = rset.getString("co.Continent");
-                cityandcountry.CityPopulation = rset.getLong("Cities_Population");
-                cityandcountry.CityPercentage = rset.getFloat("Percentage_Living_in_Cities");
-                cityandcountry.RuralPopulation = rset.getLong("Rural_Population");
-                cityandcountry.RuralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
+                cityandcountry.continent = rset.getString("co.Continent");
+                cityandcountry.cityPopulation = rset.getLong("Cities_Population");
+                cityandcountry.cityPercentage = rset.getFloat("Percentage_Living_in_Cities");
+                cityandcountry.ruralPopulation = rset.getLong("Rural_Population");
+                cityandcountry.ruralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
                 reports.add(cityandcountry);
             }
             return reports;
@@ -1101,11 +1104,11 @@ public class MainProgram {
         for (CityAndCountry report : reports) {
             if (report != null) {
                 System.out.println(
-                        "Continent: " + report.Continent + "\n"
-                                + "City Population: " + report.CityPopulation + "\n"
-                                + "City Percentage: " + report.CityPercentage + "\n"
-                                + "Rural Population: " + report.RuralPopulation + "\n"
-                                + "Rural Percentage: " + report.RuralPercentage + "\n");
+                        "Continent: " + report.continent + "\n"
+                                + "City Population: " + report.cityPopulation + "\n"
+                                + "City Percentage: " + report.cityPercentage + "\n"
+                                + "Rural Population: " + report.ruralPopulation + "\n"
+                                + "Rural Percentage: " + report.ruralPercentage + "\n");
             }
         }
     }
@@ -1137,11 +1140,11 @@ public class MainProgram {
             ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
-                cityandcountry.Region = rset.getString("co.Region");
-                cityandcountry.CityPopulation = rset.getLong("Cities_Population");
-                cityandcountry.CityPercentage = rset.getFloat("Percentage_Living_in_Cities");
-                cityandcountry.RuralPopulation = rset.getLong("Rural_Population");
-                cityandcountry.RuralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
+                cityandcountry.region = rset.getString("co.Region");
+                cityandcountry.cityPopulation = rset.getLong("Cities_Population");
+                cityandcountry.cityPercentage = rset.getFloat("Percentage_Living_in_Cities");
+                cityandcountry.ruralPopulation = rset.getLong("Rural_Population");
+                cityandcountry.ruralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
                 reports.add(cityandcountry);
             }
             return reports;
@@ -1179,11 +1182,11 @@ public class MainProgram {
             ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
-                cityandcountry.CountryName = rset.getString("co.Name");
-                cityandcountry.CityPopulation = rset.getLong("Cities_Population");
-                cityandcountry.CityPercentage = rset.getFloat("Percentage_Living_in_Cities");
-                cityandcountry.RuralPopulation = rset.getLong("Rural_Population");
-                cityandcountry.RuralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
+                cityandcountry.countryName = rset.getString("co.Name");
+                cityandcountry.cityPopulation = rset.getLong("Cities_Population");
+                cityandcountry.cityPercentage = rset.getFloat("Percentage_Living_in_Cities");
+                cityandcountry.ruralPopulation = rset.getLong("Rural_Population");
+                cityandcountry.ruralPercentage = rset.getFloat("Percentage_Living_in_Rural_Areas");
                 reports.add(cityandcountry);
             }
             return reports;
@@ -1199,11 +1202,11 @@ public class MainProgram {
         for (CityAndCountry report : reports) {
             if (report != null) {
                 System.out.println(
-                        "Country: " + report.CountryName + "\n"
-                                + "City Population: " + report.CityPopulation + "\n"
-                                + "City Percentage: " + report.CityPercentage + "\n"
-                                + "Rural Population: " + report.RuralPopulation + "\n"
-                                + "Rural Percentage: " + report.RuralPercentage + "\n");
+                        "Country: " + report.countryName + "\n"
+                                + "City Population: " + report.cityPopulation + "\n"
+                                + "City Percentage: " + report.cityPercentage + "\n"
+                                + "Rural Population: " + report.ruralPopulation + "\n"
+                                + "Rural Percentage: " + report.ruralPercentage + "\n");
             }
         }
     }
@@ -1213,11 +1216,11 @@ public class MainProgram {
         for (CityAndCountry report : reports) {
             if (report != null) {
                 System.out.println(
-                        "Region: " + report.Region + "\n"
-                                + "City Population: " + report.CityPopulation + "\n"
-                                + "City Percentage: " + report.CityPercentage + "\n"
-                                + "Rural Population: " + report.RuralPopulation + "\n"
-                                + "Rural Percentage: " + report.RuralPercentage + "\n");
+                        "Region: " + report.region + "\n"
+                                + "City Population: " + report.cityPopulation + "\n"
+                                + "City Percentage: " + report.cityPercentage + "\n"
+                                + "Rural Population: " + report.ruralPopulation + "\n"
+                                + "Rural Percentage: " + report.ruralPercentage + "\n");
             }
         }
     }
@@ -1241,7 +1244,7 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Population = rset.getLong("population");
+                country.population = rset.getLong("population");
                 countries.add(country);
             }
             return countries;
@@ -1257,7 +1260,7 @@ public class MainProgram {
         for (Country country : countries) {
             if (country != null) {
                 System.out.println(
-                        country.Population + "\n");
+                        country.population + "\n");
             }
         }
     }
@@ -1282,7 +1285,7 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Population = rset.getLong("Continent_Population");
+                country.population = rset.getLong("Continent_Population");
                 countries.add(country);
             }
             return countries;
@@ -1298,7 +1301,7 @@ public class MainProgram {
         for (Country country : countries) {
             if (country != null) {
                 System.out.println(
-                        country.Population + "\n");
+                        country.population + "\n");
             }
         }
     }
@@ -1323,7 +1326,7 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Population = rset.getLong("Region_Population");
+                country.population = rset.getLong("Region_Population");
                 countries.add(country);
             }
             return countries;
@@ -1339,7 +1342,7 @@ public class MainProgram {
         for (Country country : countries) {
             if (country != null) {
                 System.out.println(
-                        country.Population + "\n");
+                        country.population + "\n");
             }
         }
     }
@@ -1364,7 +1367,7 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Population = rset.getLong("Country_Population");
+                country.population = rset.getLong("Country_Population");
                 countries.add(country);
             }
             return countries;
@@ -1380,7 +1383,7 @@ public class MainProgram {
         for (Country country : countries) {
             if (country != null) {
                 System.out.println(
-                        country.Population + "\n");
+                        country.population + "\n");
             }
         }
     }
@@ -1405,7 +1408,7 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Population = rset.getLong("District_Population");
+                country.population = rset.getLong("District_Population");
                 countries.add(country);
             }
             return countries;
@@ -1421,7 +1424,7 @@ public class MainProgram {
         for (Country country : countries) {
             if (country != null) {
                 System.out.println(
-                        country.Population + "\n");
+                        country.population + "\n");
             }
         }
     }
@@ -1446,7 +1449,7 @@ public class MainProgram {
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next()) {
                 Country country = new Country();
-                country.Population = rset.getLong("city.Population");
+                country.population = rset.getLong("city.Population");
                 countries.add(country);
             }
             return countries;
@@ -1462,7 +1465,7 @@ public class MainProgram {
         for (Country country : countries) {
             if (country != null) {
                 System.out.println(
-                        country.Population + "\n");
+                        country.population + "\n");
             }
         }
     }
@@ -1487,9 +1490,9 @@ public class MainProgram {
             ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
-                cityandcountry.CityName = rset.getString("city.Name");
-                cityandcountry.CountryName = rset.getString("country.Name");
-                cityandcountry.CityPopulation = rset.getLong("city.Population");
+                cityandcountry.cityName = rset.getString("city.Name");
+                cityandcountry.countryName = rset.getString("country.Name");
+                cityandcountry.cityPopulation = rset.getLong("city.Population");
                 reports.add(cityandcountry);
             }
             return reports;
@@ -1505,9 +1508,9 @@ public class MainProgram {
         for (CityAndCountry report : reports) {
             if (report != null) {
                 System.out.println(
-                        "Country Name : " + report.CountryName + "\n"
-                                + "Capital City Name : " + report.CityName + "\n"
-                                + "Capital City Population : " + report.CityPopulation + "\n");
+                        "Country Name : " + report.countryName + "\n"
+                                + "Capital City Name : " + report.cityName + "\n"
+                                + "Capital City Population : " + report.cityPopulation + "\n");
             }
         }
     }
@@ -1538,9 +1541,9 @@ public class MainProgram {
             ArrayList<CityAndCountry> reports = new ArrayList<>();
             while (rset.next()) {
                 CityAndCountry cityandcountry = new CityAndCountry();
-                cityandcountry.Language = rset.getString("countrylanguage.Language");
-                cityandcountry.LanguageSpeakers = rset.getInt("Population");
-                cityandcountry.LanguagePercentage = rset.getFloat("Percentage_of_The_World_Population");
+                cityandcountry.language = rset.getString("countrylanguage.Language");
+                cityandcountry.languageSpeakers = rset.getInt("Population");
+                cityandcountry.languagePercentage = rset.getFloat("Percentage_of_The_World_Population");
                 reports.add(cityandcountry);
             }
             return reports;
@@ -1556,9 +1559,9 @@ public class MainProgram {
         for (CityAndCountry report : reports) {
             if (report != null) {
                 System.out.println(
-                        "Language : " + report.Language + "\n"
-                                + "Amount of Speakers : " + report.LanguageSpeakers + "\n"
-                                + "Percentage of Speakers : " + report.LanguagePercentage + "\n");
+                        "Language : " + report.language + "\n"
+                                + "Amount of Speakers : " + report.languageSpeakers + "\n"
+                                + "Percentage of Speakers : " + report.languagePercentage + "\n");
             }
         }
     }
@@ -1573,12 +1576,12 @@ public class MainProgram {
         for (Country country : countries) {
             if (country != null) {
                 System.out.println(
-                        "Country Code: " + country.Code + "\n"
-                                + "Country Name: " + country.Name + "\n"
-                                + "Continent: " + country.Continent + "\n"
-                                + "Region: " + country.Region + "\n"
-                                + "Population: " + country.Population + "\n"
-                                + "Capital: " + country.Capital + "\n");
+                        "Country Code: " + country.code + "\n"
+                                + "Country Name: " + country.name + "\n"
+                                + "Continent: " + country.continent + "\n"
+                                + "Region: " + country.region + "\n"
+                                + "Population: " + country.population + "\n"
+                                + "Capital: " + country.capital + "\n");
             }
         }
     }
@@ -1593,10 +1596,10 @@ public class MainProgram {
         for (City city : cities) {
             if (city != null) {
                 System.out.println(
-                        "City Name: " + city.Name + "\n"
-                                + "Country Name: " + city.CountryCode + "\n"
-                                + "District: " + city.District + "\n"
-                                + "Population: " + city.Population + "\n");
+                        "City Name: " + city.name + "\n"
+                                + "Country Name: " + city.countryCode + "\n"
+                                + "District: " + city.district + "\n"
+                                + "Population: " + city.population + "\n");
             }
         }
     }
@@ -1611,9 +1614,9 @@ public class MainProgram {
         for (City city : cities) {
             if (city != null) {
                 System.out.println(
-                        "City Name: " + city.Name + "\n"
-                                + "Country Name: " + city.CountryCode + "\n"
-                                + "Population: " + city.Population + "\n");
+                        "City Name: " + city.name + "\n"
+                                + "Country Name: " + city.countryCode + "\n"
+                                + "Population: " + city.population + "\n");
             }
         }
     }

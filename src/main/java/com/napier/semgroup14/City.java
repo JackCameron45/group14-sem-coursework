@@ -7,12 +7,12 @@ public class City {
 
     public int ID;
 
-    public String Name;
+    public String name;
 
-    public String CountryCode;
+    public String countryCode;
 
-    public String District;
+    public String district;
 
-    public int Population;
+    public int population;
 
 }

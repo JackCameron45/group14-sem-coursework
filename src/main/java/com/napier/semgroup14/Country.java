@@ -5,34 +5,34 @@ package com.napier.semgroup14;
  */
 public class Country {
 
-    public String Code;
+    public String code;
 
-    public String Name;
+    public String name;
 
-    public String Continent;
+    public String continent;
 
-    public String Region;
+    public String region;
 
-    public int SurfaceArea;
+    public int surfaceArea;
 
-    public int IndepYear;
+    public int indepYear;
 
-    public long Population;
+    public long population;
 
-    public int LifeExpectancy;
+    public int lifeExpectancy;
 
     public int GNP;
 
     public int GNPOld;
 
-    public String LocalName;
+    public String localName;
 
-    public String GovernmentForm;
+    public String governmentForm;
 
-    public String HeadOfState;
+    public String headOfState;
 
-    public int Capital;
+    public int capital;
 
-    public String Code2;
+    public String code2;
 
 }

@@ -5,26 +5,26 @@ package com.napier.semgroup14;
  */
 public class CityAndCountry {
 
-    public String CityName;
+    public String cityName;
 
-    public String CountryName;
+    public String countryName;
 
-    public Long CityPopulation;
+    public Long cityPopulation;
 
-    public Long RuralPopulation;
+    public Long ruralPopulation;
 
-    public float CityPercentage;
+    public float cityPercentage;
 
-    public float RuralPercentage;
+    public float ruralPercentage;
 
-    public String Language;
+    public String language;
 
-    public int LanguageSpeakers;
+    public int languageSpeakers;
 
-    public float LanguagePercentage;
+    public float languagePercentage;
 
-    public String Continent;
+    public String continent;
 
-    public String Region;
+    public String region;
 
 }

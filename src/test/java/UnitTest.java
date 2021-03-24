@@ -46,12 +46,12 @@ public class UnitTest {
     {
         ArrayList<Country> countries = new ArrayList<>();
         Country country = new Country();
-        country.Code = "FRA";
-        country.Name = "France";
-        country.Continent = "Europe";
-        country.Region = "Western Europe";
-        country.Population = 59225700;
-        country.Capital = 2974;
+        country.code = "FRA";
+        country.name = "France";
+        country.continent = "Europe";
+        country.region = "Western Europe";
+        country.population = 59225700;
+        country.capital = 2974;
         countries.add(country);
         MainProgram.CountryReportDisplay(countries);
     }
@@ -85,10 +85,10 @@ public class UnitTest {
     {
         ArrayList<City> cities = new ArrayList<>();
         City city = new City();
-        city.Name = "Edinburgh";
-        city.CountryCode = "GBR";
-        city.District = "Scotland";
-        city.Population = 450180;
+        city.name = "Edinburgh";
+        city.countryCode = "GBR";
+        city.district = "Scotland";
+        city.population = 450180;
         cities.add(city);
         MainProgram.CityReportDisplay(cities);
     }
@@ -122,9 +122,9 @@ public class UnitTest {
     {
         ArrayList<City> cities = new ArrayList<>();
         City city = new City();
-        city.Name = "London";
-        city.CountryCode = "GBR";
-        city.Population = 7285000;
+        city.name = "London";
+        city.countryCode = "GBR";
+        city.population = 7285000;
         cities.add(city);
         MainProgram.CapitalCityReportDisplay(cities);
     }
