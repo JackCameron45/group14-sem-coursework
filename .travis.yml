@@ -28,17 +28,35 @@ jobs:
       script: mvn test -Dtest=IntegrationTest
       #script: echo "Integration Tests"
       #script: mvn test -Dtest=com.napier.sem.IntegrationTest
-    - stage: deploy
+    - stage: GitHub Release
+      # We don't want to install
       install: skip
+      # We will build the JAR
       jdk: oraclejdk11
       script:
+        - echo "Deploying to GitHub Releases"
+        # Package (build) the JAR
         - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
-        - docker-compose up --abort-on-container-exit
+      before_deploy:
+        # Set up git user name and tag this commit
+        - git config --local user.name "JackCameron45"
+        - git config --local user.email "40436303@live.napier.ac.uk"
+        # Create temporary tag from date and Git log.
+        - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y-%m-%d')-$(git log --format=%h -1)}
+        # Set tag
+        - git tag $TRAVIS_TAG
+      deploy:
+        provider: releases
+        # This is the token we set before
+        api_key: $GITHUB_OAUTH_TOKEN
+        # Copy built JAR file to release.  JAR built in $TRAVIS_BUILD_DIR/target
+        file: $TRAVIS_BUILD_DIR/target/semgroup14.jar
+        skip_cleanup: true
 
 stages:
   - unit tests
   - integration tests
-  - name: deploy
+  - name: GitHub Release
     if: branch = master
 
 env:
@@ -51,4 +69,4 @@ after_success:
     #https://app.codecov.io/gh/MichalBoduch/group14-sem-coursework
     #Use this token when uploading reports to this repository.
     #You can set it in your CI environment variables.
-    #CODECOV_TOKEN='b65aadd4-65c1-4143-bcfc-618db2241380'
+  #CODECOV_TOKEN='b65aadd4-65c1-4143-bcfc-618db2241380'
