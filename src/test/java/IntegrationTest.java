@@ -25,7 +25,7 @@ public class IntegrationTest {
     @BeforeAll
     static void init() {
         mainprogram = new MainProgram();
-        mainprogram.connect("localhost:33060", "pass");
+        mainprogram.connect("localhost:33060");
     }
 
     //Query1 test
@@ -55,7 +55,7 @@ public class IntegrationTest {
     //Query4 test
     @Test
     public void query4GetListTest() {
-        ArrayList<Country> countries = mainprogram.query4GetList();
+        ArrayList<Country> countries = mainprogram.query4GetList("5");
         assertEquals("India", countries.get(1).name);
         assertEquals(5, countries.size());
     }
@@ -63,7 +63,7 @@ public class IntegrationTest {
     //Query5 test
     @Test
     public void query5GetListTest() {
-        ArrayList<Country> countries = mainprogram.query5GetList();
+        ArrayList<Country> countries = mainprogram.query5GetList("5");
         assertEquals("Germany", countries.get(1).name);
         assertEquals(5, countries.size());
     }
@@ -71,7 +71,7 @@ public class IntegrationTest {
     //Query6 test
     @Test
     public void query6GetListTest() {
-        ArrayList<Country> countries = mainprogram.query6GetList();
+        ArrayList<Country> countries = mainprogram.query6GetList("5");
         assertEquals("Haiti", countries.get(2).name);
         assertEquals(5, countries.size());
     }
@@ -119,7 +119,7 @@ public class IntegrationTest {
     //Query12 test
     @Test
     public void query12GetListTest() {
-        ArrayList<City> cities = mainprogram.query12GetList();
+        ArrayList<City> cities = mainprogram.query12GetList("5");
         assertEquals(5, cities.size());
         assertEquals("Seoul", cities.get(1).name);
     }
@@ -127,7 +127,7 @@ public class IntegrationTest {
     //Query13 test
     @Test
     public void query13GetListTest() {
-        ArrayList<City> cities = mainprogram.query13GetList();
+        ArrayList<City> cities = mainprogram.query13GetList("5");
         assertEquals(5, cities.size());
         assertEquals("Moscow", cities.get(0).name);
     }
@@ -135,7 +135,7 @@ public class IntegrationTest {
     //Query14 test
     @Test
     public void query14GetListTest() {
-        ArrayList<City> cities = mainprogram.query14GetList();
+        ArrayList<City> cities = mainprogram.query14GetList("5");
         assertEquals(5, cities.size());
         assertEquals("La Habana", cities.get(0).name);
     }
@@ -143,7 +143,7 @@ public class IntegrationTest {
     //Query15 test
     @Test
     public void query15GetListTest() {
-        ArrayList<City> cities = mainprogram.query15GetList();
+        ArrayList<City> cities = mainprogram.query15GetList("5");
         assertEquals(5, cities.size());
         assertEquals("Paris", cities.get(0).name);
     }
@@ -151,7 +151,7 @@ public class IntegrationTest {
     //Query16 test
     @Test
     public void query16GetListTest() {
-        ArrayList<City> cities = mainprogram.query16GetList();
+        ArrayList<City> cities = mainprogram.query16GetList("5");
         assertEquals(5, cities.size());
         assertEquals("Godoy Cruz", cities.get(0).name);
     }
@@ -183,7 +183,7 @@ public class IntegrationTest {
     //Query20 test
     @Test
     public void query20GetListTest() {
-        ArrayList<City> cities = mainprogram.query20GetList();
+        ArrayList<City> cities = mainprogram.query20GetList("5");
         assertEquals(5, cities.size());
         assertEquals("Seoul", cities.get(0).name);
     }
@@ -191,7 +191,7 @@ public class IntegrationTest {
     //Query21 test
     @Test
     public void query21GetListTest() {
-        ArrayList<City> cities = mainprogram.query21GetList();
+        ArrayList<City> cities = mainprogram.query21GetList("5");
         assertEquals(5, cities.size());
         assertEquals("Berlin", cities.get(2).name);
     }
@@ -199,7 +199,7 @@ public class IntegrationTest {
     //Query22 test
     @Test
     public void query22GetListTest() {
-        ArrayList<City> cities = mainprogram.query22GetList();
+        ArrayList<City> cities = mainprogram.query22GetList("5");
         assertEquals(5, cities.size());
         assertEquals("Avarua", cities.get(3).name);
     }
@@ -292,4 +292,3 @@ public class IntegrationTest {
         assertEquals("Chinese", reports.get(0).language);
     }
 }
-

@@ -1,5 +1,11 @@
 package com.napier.semgroup14;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -7,16 +13,18 @@ import java.util.ArrayList;
 /**
  * Class to connect to the MySQL world database
  */
+@SpringBootApplication
+@RestController
 public class MainProgram {
     /**
      * Connection to MySQL world database.
      */
-    private Connection con = null;
+    private static Connection con = null;
 
     /**
      * Connect to the MySQL world database.
      */
-    public void connect(String location, String password) {
+    public static void connect(String location) {
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -30,7 +38,7 @@ public class MainProgram {
             System.out.println("Connecting to database...");
             try {
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", password);
+                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "pass");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
@@ -49,7 +57,7 @@ public class MainProgram {
     /**
      * Disconnect from the MySQL world database.
      */
-    public void disconnect() {
+    public static void disconnect() {
         if (con != null) {
             try {
                 // Close connection
@@ -61,217 +69,19 @@ public class MainProgram {
     }
 
     //Use methods to connect to the database
-    public static void main(String[] args) {
-        // Create new Application
-        MainProgram a = new MainProgram();
-
+    public static void main(String[] args)
+    {
         // Connect to database
-        if (args.length < 1) {
-            a.connect("localhost:3306", "pass");
-        } else {
-            a.connect(args[0],"pass");
+        if (args.length < 1)
+        {
+            connect("localhost:33060");
+        }
+        else
+        {
+            connect(args[0]);
         }
 
-        // Extract info for query #1
-        System.out.println("Query 1, population of countries in world" + "\n");
-        ArrayList<Country> citiesq1 = a.query1GetList();
-        // Run query #1
-        CountryReportDisplay(citiesq1);
-
-        // Extract info for query #2
-        System.out.println("Query 2, population of countries in Asia" + "\n");
-        ArrayList<Country> citiesq2 = a.query2GetList();
-        // Run query #2
-        CountryReportDisplay(citiesq2);
-
-        // Extract info for query #3
-        System.out.println("Query 3, population of countries in Caribbean" + "\n");
-        ArrayList<Country> citiesq3 = a.query3GetList();
-        // Run query #3
-        CountryReportDisplay(citiesq3);
-
-        // Extract info for query #4
-        System.out.println("Query 4, top N populated Countries" + "\n");
-        ArrayList<Country> citiesq4 = a.query4GetList();
-        // Run query #4
-        CountryReportDisplay(citiesq4);
-
-        // Extract info for query #5
-        System.out.println("Query 5, top N populated Countries in Europe" + "\n");
-        ArrayList<Country> citiesq5 = a.query5GetList();
-        // Run query #5
-        CountryReportDisplay(citiesq5);
-
-        // Extract info for query #6
-        System.out.println("Query 6, top N populated Countries in the Caribbean" + "\n");
-        ArrayList<Country> citiesq6 = a.query6GetList();
-        // Run query #6
-        CountryReportDisplay(citiesq6);
-
-        // Extract info for query #7
-        System.out.println("Query 7, population of cities in world" + "\n");
-        ArrayList<City> citiesq7 = a.query7GetList();
-        // Run query #7
-        CityReportDisplay(citiesq7);
-
-        // Extract info for query #8
-        System.out.println("Query 8, population of cities in continent Europe" + "\n");
-        ArrayList<City> citiesq8 = a.query8GetList();
-        // Run query #8
-        CityReportDisplay(citiesq8);
-
-        // Extract info for query #9
-        System.out.println("Query 9, population of cities in region Caribbean" + "\n");
-        ArrayList<City> citiesq9 = a.query9GetList();
-        // Run query #9
-        CityReportDisplay(citiesq9);
-
-        // Extract info for query #10
-        System.out.println("Query 10, population of cities in country France" + "\n");
-        ArrayList<City> citiesq10 = a.query10GetList();
-        // Run query #10
-        CityReportDisplay(citiesq10);
-
-        // Extract info for query #11
-        System.out.println("Query 11, population of cities in district Mendoza" + "\n");
-        ArrayList<City> citiesq11 = a.query11GetList();
-        // Run query #11
-        CityReportDisplay(citiesq11);
-
-        // Extract info for query #12
-        System.out.println("Query 12, top N populated cities in the world" + "\n");
-        ArrayList<City> citiesq12 = a.query12GetList();
-        // Run query #12
-        CityReportDisplay(citiesq12);
-
-        // Extract info for query #13
-        System.out.println("Query 13, top N populated cities in Europe" + "\n");
-        ArrayList<City> citiesq13 = a.query13GetList();
-        // Run query #13
-        CityReportDisplay(citiesq13);
-
-        // Extract info for query #14
-        System.out.println("Query 14, top N populated cities in the Caribbean" + "\n");
-        ArrayList<City> citiesq14 = a.query14GetList();
-        // Run query #14
-        CityReportDisplay(citiesq14);
-
-        // Extract info for query #15
-        System.out.println("Query 15, top N populated cities in France" + "\n");
-        ArrayList<City> citiesq15 = a.query15GetList();
-        // Run query #15
-        CityReportDisplay(citiesq15);
-
-        // Extract info for query #16
-        System.out.println("Query 16, top N populated cities in Mendoza" + "\n");
-        ArrayList<City> citiesq16 = a.query16GetList();
-        // Run query #16
-        CityReportDisplay(citiesq16);
-
-        // Extract info for query #17
-        System.out.println("Query 17, population of capital cities" + "\n");
-        ArrayList<City> citiesq17 = a.query17GetList();
-        // Run query #17
-        CapitalCityReportDisplay(citiesq17);
-
-        // Extract info for query #18
-        System.out.println("Query 18, population of capital cities in Europe" + "\n");
-        ArrayList<City> citiesq18 = a.query18GetList();
-        // Run query #18
-        CapitalCityReportDisplay(citiesq18);
-
-        // Extract info for query #19
-        System.out.println("Query 19, population of capital cities in Polynesia" + "\n");
-        ArrayList<City> citiesq19 = a.query19GetList();
-        // Run query #19
-        CapitalCityReportDisplay(citiesq19);
-
-        // Extract info for query #20
-        System.out.println("Query 20, top N populated capital cities in the world" + "\n");
-        ArrayList<City> citiesq20 = a.query20GetList();
-        // Run query #20
-        CapitalCityReportDisplay(citiesq20);
-
-        // Extract info for query #21
-        System.out.println("Query 21, top N populated capital cities in Europe" + "\n");
-        ArrayList<City> citiesq21 = a.query21GetList();
-        // Run query #21
-        CapitalCityReportDisplay(citiesq21);
-
-        // Extract info for query #22
-        System.out.println("Query 22, top N populated capital cities in Polynesia" + "\n");
-        ArrayList<City> citiesq22 = a.query22GetList();
-        // Run query #22
-        CapitalCityReportDisplay(citiesq22);
-
-        // Extract info for query #23
-        System.out.println("Query 23, Population living in cities and rural areas in each continent" + "\n");
-        ArrayList<CityAndCountry> citiesq23 = a.query23GetList();
-        // Run query #23
-        query23Display(citiesq23);
-
-        // Extract info for query #24
-        System.out.println("Query 24, Population living in cities and rural areas in each region" + "\n");
-        ArrayList<CityAndCountry> citiesq24 = a.query24GetList();
-        // Run query #24
-        query24Display(citiesq24);
-
-        // Extract info for query #25
-        System.out.println("Query 25, Population living in cities and rural areas in each country" + "\n");
-        ArrayList<CityAndCountry> citiesq25 = a.query25GetList();
-        // Run query #25
-        query25Display(citiesq25);
-
-        // Extract info for query #26
-        System.out.println("Query 26, population of the world" + "\n");
-        ArrayList<Country> citiesq26 = a.query26GetList();
-        // Run query #26
-        query26Display(citiesq26);
-
-        // Extract info for query #27
-        System.out.println("Query 27, population of Europe" + "\n");
-        ArrayList<Country> citiesq27 = a.query27GetList();
-        // Run query #27
-        query27Display(citiesq27);
-
-        // Extract info for query #28
-        System.out.println("Query 28, population of the Caribbean" + "\n");
-        ArrayList<Country> citiesq28 = a.query28GetList();
-        // Run query #28
-        query28Display(citiesq28);
-
-        // Extract info for query #29
-        System.out.println("Query 29, population of France" + "\n");
-        ArrayList<Country> citiesq29 = a.query29GetList();
-        // Run query #29
-        query29Display(citiesq29);
-
-        // Extract info for query #30
-        System.out.println("Query 30, population of Baijeri" + "\n");
-        ArrayList<Country> citiesq30 = a.query30GetList();
-        // Run query #30
-        query30Display(citiesq30);
-
-        // Extract info for query #31
-        System.out.println("Query 31, population of Paris" + "\n");
-        ArrayList<Country> citiesq31 = a.query31GetList();
-        // Run query #31
-        query31Display(citiesq31);
-
-        // Extract info for query #32
-        System.out.println("Query 32, Capital City Report" + "\n");
-        ArrayList<CityAndCountry> citiesq32 = a.query32GetList();
-        // Run query #32
-        query32Display(citiesq32);
-
-        // Extract info for query #33
-        System.out.println("Query 33, Amount of language speakers in the world" + "\n");
-        ArrayList<CityAndCountry> citiesq33 = a.query33GetList();
-        // Run query #33
-        query33Display(citiesq33);
-
-        // Disconnect from database
-        a.disconnect();
+        SpringApplication.run(MainProgram.class, args);
     }
 
     /**
@@ -279,6 +89,7 @@ public class MainProgram {
      *
      * @return A list of all countries populations in the world, or null if there is an error.
      */
+    @RequestMapping("query1")
     public ArrayList<Country> query1GetList() {
         try {
             // Create an SQL statement
@@ -315,6 +126,7 @@ public class MainProgram {
      *
      * @return A list of all countries populations in the continent, or null if there is an error.
      */
+    @RequestMapping("query2")
     public ArrayList<Country> query2GetList() {
         try {
             // Create an SQL statement
@@ -352,6 +164,7 @@ public class MainProgram {
      *
      * @return A list of all countries populations in the region, or null if there is an error.
      */
+    @RequestMapping("query3")
     public ArrayList<Country> query3GetList() {
         try {
             // Create an SQL statement
@@ -389,7 +202,8 @@ public class MainProgram {
      *
      * @return A list of all top N countries populations, or null if there is an error.
      */
-    public ArrayList<Country> query4GetList() {
+    @RequestMapping("query4")
+    public ArrayList<Country> query4GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -398,7 +212,8 @@ public class MainProgram {
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, country.Capital "
                             + "FROM country "
                             + "ORDER BY country.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -426,7 +241,8 @@ public class MainProgram {
      *
      * @return A list of all top N countries populations, or null if there is an error.
      */
-    public ArrayList<Country> query5GetList() {
+    @RequestMapping("query5")
+    public ArrayList<Country> query5GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -436,7 +252,8 @@ public class MainProgram {
                             + "FROM country "
                             + "WHERE country.Continent = 'Europe' "
                             + "ORDER BY country.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -464,7 +281,8 @@ public class MainProgram {
      *
      * @return A list of all top N countries populations, or null if there is an error.
      */
-    public ArrayList<Country> query6GetList() {
+    @RequestMapping("query6")
+    public ArrayList<Country> query6GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -474,7 +292,8 @@ public class MainProgram {
                             + "FROM country "
                             + "WHERE country.Region = 'Caribbean' "
                             + "ORDER BY country.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -502,6 +321,7 @@ public class MainProgram {
      *
      * @return A list of all cities and populations in the world, or null if there is an error.
      */
+    @RequestMapping("query7")
     public ArrayList<City> query7GetList() {
         try {
             // Create an SQL statement
@@ -536,6 +356,7 @@ public class MainProgram {
      *
      * @return A list of all cities and populations in a continent, or null if there is an error.
      */
+    @RequestMapping("query8")
     public ArrayList<City> query8GetList() {
         try {
             // Create an SQL statement
@@ -571,6 +392,7 @@ public class MainProgram {
      *
      * @return A list of all cities and populations in a region, or null if there is an error.
      */
+    @RequestMapping("query9")
     public ArrayList<City> query9GetList() {
         try {
             // Create an SQL statement
@@ -606,6 +428,7 @@ public class MainProgram {
      *
      * @return A list of all cities and populations in a country, or null if there is an error.
      */
+    @RequestMapping("query10")
     public ArrayList<City> query10GetList() {
         try {
             // Create an SQL statement
@@ -641,6 +464,7 @@ public class MainProgram {
      *
      * @return A list of all cities and populations in a district, or null if there is an error.
      */
+    @RequestMapping("query11")
     public ArrayList<City> query11GetList() {
         try {
             // Create an SQL statement
@@ -676,7 +500,8 @@ public class MainProgram {
      *
      * @return A list of the top N populated cities, or null if there is an error.
      */
-    public ArrayList<City> query12GetList() {
+    @RequestMapping("query12")
+    public ArrayList<City> query12GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -685,7 +510,8 @@ public class MainProgram {
                     "SELECT city.Name, city.CountryCode, city.District, city.Population "
                             + "FROM city "
                             + "ORDER BY city.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -711,7 +537,8 @@ public class MainProgram {
      *
      * @return A list of the top N populated cities, or null if there is an error.
      */
-    public ArrayList<City> query13GetList() {
+    @RequestMapping("query13")
+    public ArrayList<City> query13GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -721,7 +548,8 @@ public class MainProgram {
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE Continent = 'Europe' ) "
                             + "ORDER BY city.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -747,7 +575,8 @@ public class MainProgram {
      *
      * @return A list of the top N populated cities, or null if there is an error.
      */
-    public ArrayList<City> query14GetList() {
+    @RequestMapping("query14")
+    public ArrayList<City> query14GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -757,7 +586,8 @@ public class MainProgram {
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE Region = 'Caribbean' ) "
                             + "ORDER BY city.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -783,7 +613,8 @@ public class MainProgram {
      *
      * @return A list of the top N populated cities, or null if there is an error.
      */
-    public ArrayList<City> query15GetList() {
+    @RequestMapping("query15")
+    public ArrayList<City> query15GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -793,7 +624,8 @@ public class MainProgram {
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE country.Name = 'France' ) "
                             + "ORDER BY city.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -819,7 +651,8 @@ public class MainProgram {
      *
      * @return A list of the top N populated cities, or null if there is an error.
      */
-    public ArrayList<City> query16GetList() {
+    @RequestMapping("query16")
+    public ArrayList<City> query16GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -829,7 +662,8 @@ public class MainProgram {
                             + "FROM city "
                             + "WHERE city.District = 'Mendoza' "
                             + "ORDER BY city.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -855,6 +689,7 @@ public class MainProgram {
      *
      * @return A list of all capital cities and populations in the world, or null if there is an error.
      */
+    @RequestMapping("query17")
     public ArrayList<City> query17GetList() {
         try {
             // Create an SQL statement
@@ -889,6 +724,7 @@ public class MainProgram {
      *
      * @return A list of all capital cities and populations in a continent, or null if there is an error.
      */
+    @RequestMapping("query18")
     public ArrayList<City> query18GetList() {
         try {
             // Create an SQL statement
@@ -923,6 +759,7 @@ public class MainProgram {
      *
      * @return A list of all capital cities and populations in a region, or null if there is an error.
      */
+    @RequestMapping("query19")
     public ArrayList<City> query19GetList() {
         try {
             // Create an SQL statement
@@ -957,7 +794,8 @@ public class MainProgram {
      *
      * @return A list of the top N populated capital cities, or null if there is an error.
      */
-    public ArrayList<City> query20GetList() {
+    @RequestMapping("query20")
+    public ArrayList<City> query20GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -967,7 +805,8 @@ public class MainProgram {
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.Capital FROM country ) "
                             + "ORDER BY city.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -992,7 +831,8 @@ public class MainProgram {
      *
      * @return A list of the top N populated capital cities, or null if there is an error.
      */
-    public ArrayList<City> query21GetList() {
+    @RequestMapping("query21")
+    public ArrayList<City> query21GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1002,7 +842,8 @@ public class MainProgram {
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.Capital FROM country WHERE country.Continent = 'Europe' ) "
                             + "ORDER BY city.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -1027,7 +868,8 @@ public class MainProgram {
      *
      * @return A list of the top N populated capital cities, or null if there is an error.
      */
-    public ArrayList<City> query22GetList() {
+    @RequestMapping("query22")
+    public ArrayList<City> query22GetList(@RequestParam(value = "id") String ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1037,7 +879,8 @@ public class MainProgram {
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.Capital FROM country WHERE country.Region = 'Polynesia' ) "
                             + "ORDER BY city.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT "
+                            + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -1062,6 +905,7 @@ public class MainProgram {
      *
      * @return A report of the rural and cities population in a continent, or null if there is an error.
      */
+    @RequestMapping("query23")
     public ArrayList<CityAndCountry> query23GetList() {
         try {
             // Create an SQL statement
@@ -1118,6 +962,7 @@ public class MainProgram {
      *
      * @return A report of the rural and cities population in a region, or null if there is an error.
      */
+    @RequestMapping("query24")
     public ArrayList<CityAndCountry> query24GetList() {
         try {
             // Create an SQL statement
@@ -1160,6 +1005,7 @@ public class MainProgram {
      *
      * @return A report of the rural and cities population in a region, or null if there is an error.
      */
+    @RequestMapping("query25")
     public ArrayList<CityAndCountry> query25GetList() {
         try {
             // Create an SQL statement
@@ -1230,6 +1076,7 @@ public class MainProgram {
      *
      * @return A list of the world population, or null if there is an error.
      */
+    @RequestMapping("query26")
     public ArrayList<Country> query26GetList() {
         try {
             // Create an SQL statement
@@ -1270,6 +1117,7 @@ public class MainProgram {
      *
      * @return A list of the continent population, or null if there is an error.
      */
+    @RequestMapping("query27")
     public ArrayList<Country> query27GetList() {
         try {
             // Create an SQL statement
@@ -1311,6 +1159,7 @@ public class MainProgram {
      *
      * @return A list of the region population, or null if there is an error.
      */
+    @RequestMapping("query28")
     public ArrayList<Country> query28GetList() {
         try {
             // Create an SQL statement
@@ -1352,6 +1201,7 @@ public class MainProgram {
      *
      * @return A list of the country population, or null if there is an error.
      */
+    @RequestMapping("query29")
     public ArrayList<Country> query29GetList() {
         try {
             // Create an SQL statement
@@ -1393,6 +1243,7 @@ public class MainProgram {
      *
      * @return A list of the district population, or null if there is an error.
      */
+    @RequestMapping("query30")
     public ArrayList<Country> query30GetList() {
         try {
             // Create an SQL statement
@@ -1434,6 +1285,7 @@ public class MainProgram {
      *
      * @return A list of the city population, or null if there is an error.
      */
+    @RequestMapping("query31")
     public ArrayList<Country> query31GetList() {
         try {
             // Create an SQL statement
@@ -1475,6 +1327,7 @@ public class MainProgram {
      *
      * @return A report of the capital city, or null if there is an error.
      */
+    @RequestMapping("query32")
     public ArrayList<CityAndCountry> query32GetList() {
         try {
             // Create an SQL statement
@@ -1520,6 +1373,7 @@ public class MainProgram {
      *
      * @return A report of the languages, or null if there is an error.
      */
+    @RequestMapping("query33")
     public ArrayList<CityAndCountry> query33GetList() {
         try {
             // Create an SQL statement
@@ -1620,5 +1474,4 @@ public class MainProgram {
             }
         }
     }
-
 }
