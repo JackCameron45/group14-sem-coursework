@@ -127,7 +127,7 @@ public class MainProgram {
      * @return A list of all countries populations in the continent, or null if there is an error.
      */
     @RequestMapping("query2")
-    public ArrayList<Country> query2GetList() {
+    public ArrayList<Country> query2GetList(@RequestParam(value = "continent") String CONTINENT) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -135,7 +135,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, country.Capital "
                             + "FROM country "
-                            + "WHERE country.Continent = 'Asia' "
+                            + "WHERE country.Continent = '"
+                            + CONTINENT
+                            + "' "
                             + "ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -165,7 +167,7 @@ public class MainProgram {
      * @return A list of all countries populations in the region, or null if there is an error.
      */
     @RequestMapping("query3")
-    public ArrayList<Country> query3GetList() {
+    public ArrayList<Country> query3GetList(@RequestParam(value = "region") String REGION) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -173,7 +175,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, country.Capital "
                             + "FROM country "
-                            + "WHERE country.Region = 'Caribbean' "
+                            + "WHERE country.Region = '"
+                            + REGION
+                            + "' "
                             + "ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -357,7 +361,7 @@ public class MainProgram {
      * @return A list of all cities and populations in a continent, or null if there is an error.
      */
     @RequestMapping("query8")
-    public ArrayList<City> query8GetList() {
+    public ArrayList<City> query8GetList(@RequestParam(value = "continent") String CONTINENT) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -365,7 +369,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT city.Name, city.CountryCode, city.District, city.Population "
                             + "FROM city, country "
-                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE Continent = 'Europe' ) "
+                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE Continent = '"
+                            + CONTINENT
+                            + "' ) "
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -393,7 +399,7 @@ public class MainProgram {
      * @return A list of all cities and populations in a region, or null if there is an error.
      */
     @RequestMapping("query9")
-    public ArrayList<City> query9GetList() {
+    public ArrayList<City> query9GetList(@RequestParam(value = "region") String REGION) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -401,7 +407,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT city.Name, city.CountryCode, city.District, city.Population "
                             + "FROM city, country "
-                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE country.Region = 'Caribbean' ) "
+                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE country.Region = '"
+                            + REGION
+                            + "' ) "
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -429,7 +437,7 @@ public class MainProgram {
      * @return A list of all cities and populations in a country, or null if there is an error.
      */
     @RequestMapping("query10")
-    public ArrayList<City> query10GetList() {
+    public ArrayList<City> query10GetList(@RequestParam(value = "country") String COUNTRY) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -437,7 +445,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT city.Name, city.CountryCode, city.District, city.Population "
                             + "FROM city, country "
-                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE country.Name = 'France' ) "
+                            + "WHERE city.CountryCode = country.code AND city.CountryCode IN (SELECT country.Code FROM country WHERE country.Name = '"
+                            + COUNTRY
+                            + "' ) "
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -465,7 +475,7 @@ public class MainProgram {
      * @return A list of all cities and populations in a district, or null if there is an error.
      */
     @RequestMapping("query11")
-    public ArrayList<City> query11GetList() {
+    public ArrayList<City> query11GetList(@RequestParam(value = "district") String DISTRICT) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -473,7 +483,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT city.Name, city.CountryCode, city.District, city.Population "
                             + "FROM city "
-                            + "WHERE city.District = 'Mendoza' "
+                            + "WHERE city.District = '"
+                            + DISTRICT
+                            + "' "
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -725,7 +737,7 @@ public class MainProgram {
      * @return A list of all capital cities and populations in a continent, or null if there is an error.
      */
     @RequestMapping("query18")
-    public ArrayList<City> query18GetList() {
+    public ArrayList<City> query18GetList(@RequestParam(value = "continent") String CONTINENT) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -733,7 +745,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT city.name, city.CountryCode, city.Population "
                             + "FROM city, country "
-                            + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.capital FROM country WHERE country.Continent = 'Europe' ) "
+                            + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.capital FROM country WHERE country.Continent = '"
+                            + CONTINENT
+                            + "' ) "
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -760,7 +774,7 @@ public class MainProgram {
      * @return A list of all capital cities and populations in a region, or null if there is an error.
      */
     @RequestMapping("query19")
-    public ArrayList<City> query19GetList() {
+    public ArrayList<City> query19GetList(@RequestParam(value = "region") String REGION) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -768,7 +782,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT city.name, city.CountryCode, city.Population "
                             + "FROM city, country "
-                            + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.capital FROM country WHERE country.Region = 'Polynesia' ) "
+                            + "WHERE city.CountryCode = country.code AND city.ID IN (SELECT country.capital FROM country WHERE country.Region = '"
+                            + REGION
+                            + "' ) "
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -1118,7 +1134,7 @@ public class MainProgram {
      * @return A list of the continent population, or null if there is an error.
      */
     @RequestMapping("query27")
-    public ArrayList<Country> query27GetList() {
+    public ArrayList<Country> query27GetList(@RequestParam(value = "continent") String CONTINENT) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1126,7 +1142,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT SUM(country.Population) AS Continent_Population "
                             + "FROM country "
-                            + "WHERE country.Continent = 'Europe'";
+                            + "WHERE country.Continent = '"
+                            + CONTINENT
+                            + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -1160,7 +1178,7 @@ public class MainProgram {
      * @return A list of the region population, or null if there is an error.
      */
     @RequestMapping("query28")
-    public ArrayList<Country> query28GetList() {
+    public ArrayList<Country> query28GetList(@RequestParam(value = "region") String REGION) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1168,7 +1186,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT SUM(country.Population) AS Region_Population "
                             + "FROM country "
-                            + "WHERE country.Region = 'Caribbean'";
+                            + "WHERE country.Region = '"
+                            + REGION
+                            + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -1202,7 +1222,7 @@ public class MainProgram {
      * @return A list of the country population, or null if there is an error.
      */
     @RequestMapping("query29")
-    public ArrayList<Country> query29GetList() {
+    public ArrayList<Country> query29GetList(@RequestParam(value = "country") String COUNTRY) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1210,7 +1230,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT SUM(country.Population) AS Country_Population "
                             + "FROM country "
-                            + "WHERE country.Name = 'France'";
+                            + "WHERE country.Name = '"
+                            + COUNTRY
+                            + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -1244,7 +1266,7 @@ public class MainProgram {
      * @return A list of the district population, or null if there is an error.
      */
     @RequestMapping("query30")
-    public ArrayList<Country> query30GetList() {
+    public ArrayList<Country> query30GetList(@RequestParam(value = "district") String DISTRICT) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1252,7 +1274,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT SUM(city.Population) AS District_Population "
                             + "FROM city "
-                            + "WHERE city.District = 'Baijeri'";
+                            + "WHERE city.District = '"
+                            + DISTRICT
+                            + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -1286,7 +1310,7 @@ public class MainProgram {
      * @return A list of the city population, or null if there is an error.
      */
     @RequestMapping("query31")
-    public ArrayList<Country> query31GetList() {
+    public ArrayList<Country> query31GetList(@RequestParam(value = "city") String CITY) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1294,7 +1318,9 @@ public class MainProgram {
             String strSelect =
                     "SELECT city.Population "
                             + "FROM city "
-                            + "WHERE city.Name = 'Paris'";
+                            + "WHERE city.Name = '"
+                            + CITY
+                            + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract city information
@@ -1327,7 +1353,7 @@ public class MainProgram {
      *
      * @return A report of the capital city, or null if there is an error.
      */
-    @RequestMapping("query32")
+    @RequestMapping("query32test")
     public ArrayList<CityAndCountry> query32GetList() {
         try {
             // Create an SQL statement
@@ -1373,7 +1399,7 @@ public class MainProgram {
      *
      * @return A report of the languages, or null if there is an error.
      */
-    @RequestMapping("query33")
+    @RequestMapping("query32")
     public ArrayList<CityAndCountry> query33GetList() {
         try {
             // Create an SQL statement

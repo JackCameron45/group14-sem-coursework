@@ -39,7 +39,7 @@ public class IntegrationTest {
     //Query2 test
     @Test
     public void query2GetListTest() {
-        ArrayList<Country> countries = mainprogram.query2GetList();
+        ArrayList<Country> countries = mainprogram.query2GetList("Asia");
         assertEquals("China", countries.get(0).name);
         assertEquals(51, countries.size());
     }
@@ -47,7 +47,7 @@ public class IntegrationTest {
     //Query3 test
     @Test
     public void query3GetListTest() {
-        ArrayList<Country> countries = mainprogram.query3GetList();
+        ArrayList<Country> countries = mainprogram.query3GetList("Caribbean");
         assertEquals("Haiti", countries.get(2).name);
         assertEquals(24, countries.size());
     }
@@ -87,7 +87,7 @@ public class IntegrationTest {
     //Query8 test
     @Test
     public void query8GetListTest() {
-        ArrayList<City> cities = mainprogram.query8GetList();
+        ArrayList<City> cities = mainprogram.query8GetList("Europe");
         assertEquals(841, cities.size());
         assertEquals("Moscow", cities.get(0).name);
     }
@@ -95,7 +95,7 @@ public class IntegrationTest {
     //Query9 test
     @Test
     public void query9GetListTest() {
-        ArrayList<City> cities = mainprogram.query9GetList();
+        ArrayList<City> cities = mainprogram.query9GetList("Caribbean");
         assertEquals(58, cities.size());
         assertEquals("Carrefour", cities.get(7).name);
     }
@@ -103,7 +103,7 @@ public class IntegrationTest {
     //Query10 test
     @Test
     public void query10GetListTest() {
-        ArrayList<City> cities = mainprogram.query10GetList();
+        ArrayList<City> cities = mainprogram.query10GetList("France");
         assertEquals(40, cities.size());
         assertEquals("Marseille", cities.get(1).name);
     }
@@ -111,7 +111,7 @@ public class IntegrationTest {
     //Query11 test
     @Test
     public void query11GetListTest() {
-        ArrayList<City> cities = mainprogram.query11GetList();
+        ArrayList<City> cities = mainprogram.query11GetList("Mendoza");
         assertEquals(5, cities.size());
         assertEquals("Las Heras", cities.get(2).name);
     }
@@ -167,7 +167,7 @@ public class IntegrationTest {
     //Query18 test
     @Test
     public void query18GetListTest() {
-        ArrayList<City> cities = mainprogram.query18GetList();
+        ArrayList<City> cities = mainprogram.query18GetList("Europe");
         assertEquals(46, cities.size());
         assertEquals("London", cities.get(1).name);
     }
@@ -175,7 +175,7 @@ public class IntegrationTest {
     //Query19 test
     @Test
     public void query19GetListTest() {
-        ArrayList<City> cities = mainprogram.query19GetList();
+        ArrayList<City> cities = mainprogram.query19GetList("Polynesia");
         assertEquals(10, cities.size());
         assertEquals("Papeete", cities.get(1).name);
     }
@@ -239,7 +239,7 @@ public class IntegrationTest {
     //Query27 test
     @Test
     public void query27GetListTest() {
-        ArrayList<Country> country = mainprogram.query27GetList();
+        ArrayList<Country> country = mainprogram.query27GetList("Europe");
         assertEquals(1, country.size());
         assertEquals(730074600, country.get(0).population);
     }
@@ -247,7 +247,7 @@ public class IntegrationTest {
     //Query28 test
     @Test
     public void query28GetListTest() {
-        ArrayList<Country> country = mainprogram.query28GetList();
+        ArrayList<Country> country = mainprogram.query28GetList("Caribbean");
         assertEquals(1, country.size());
         assertEquals(38140000, country.get(0).population);
     }
@@ -255,7 +255,7 @@ public class IntegrationTest {
     //Query29 test
     @Test
     public void query29GetListTest() {
-        ArrayList<Country> country = mainprogram.query29GetList();
+        ArrayList<Country> country = mainprogram.query29GetList("France");
         assertEquals(1, country.size());
         assertEquals(59225700, country.get(0).population);
     }
@@ -263,7 +263,7 @@ public class IntegrationTest {
     //Query30 test
     @Test
     public void query30GetListTest() {
-        ArrayList<Country> country = mainprogram.query30GetList();
+        ArrayList<Country> country = mainprogram.query30GetList("Baijeri");
         assertEquals(1, country.size());
         assertEquals(2513988, country.get(0).population);
     }
@@ -271,7 +271,7 @@ public class IntegrationTest {
     //Query31 test
     @Test
     public void query31GetListTest() {
-        ArrayList<Country> country = mainprogram.query31GetList();
+        ArrayList<Country> country = mainprogram.query31GetList("Paris");
         assertEquals(1, country.size());
         assertEquals(2125246, country.get(0).population);
     }
