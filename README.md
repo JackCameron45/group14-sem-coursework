@@ -15,7 +15,7 @@
 |  6  | The top N populated countries in a region where N is provided by the user.                                        | yes | ![Imgur Image](https://imgur.com/qep1C8E.png) |
 |  7  | All the cities in the world organised by largest population to smallest.                                          | yes | ![Imgur Image](https://imgur.com/VlDKEZv.png) |
 |  8  | All the cities in a continent organised by largest population to smallest.                                        | yes | ![Imgur Image](https://imgur.com/L19MC4N.png) |
-|  9  | All the cities in a region organised by largest population to smallest.                                           | yes | ![Imgur Image](https://imgur.com/L19MC4N.png) |
+|  9  | All the cities in a region organised by largest population to smallest.                                           | yes | ![Imgur Image](https://imgur.com/wsCqdzB.png) |
 |  10 | All the cities in a country organised by largest population to smallest.                                          | yes | ![Imgur Image](https://imgur.com/FBty9iL.png) |
 |  11 | All the cities in a district organised by largest population to smallest.                                         | yes | ![Imgur Image](https://imgur.com/fQ0KGoG.png) |
 |  12 | The top N populated cities in the world where N is provided by the user.                                          | yes | ![Imgur Image](https://imgur.com/SKFoTc1.png) |
